@@ -1,0 +1,39 @@
+version: "3.9"
+
+volumes:
+  pg14_postgres_data_local: {}
+  pg14_postgres_backup_local: {}
+
+services:
+  db:
+    platform: linux/amd64
+    build: ./docker/production/postgres/
+    image: {{cookiecutter.project_slug}}_production_postgres
+    volumes:
+      - pg14_postgres_data_local:/var/lib/postgresql/data
+      - pg14_postgres_backup_local:/backups
+    env_file:
+      - ./.envs/.local/.postgres
+    ports:
+      - "5432:5432"
+  {{cookiecutter.docker_service_web}}:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: ./docker/local/django/Dockerfile
+    command: /start-{{cookiecutter.docker_service_web}}
+    image: {{cookiecutter.project_slug}}_local_{{cookiecutter.docker_service_web}}
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./.envs/.local/.django
+      - ./.envs/.local/.postgres
+    # replaced by env_file
+    # environment:
+    #   - POSTGRES_NAME=postgres
+    #   - POSTGRES_USER=postgres
+    #   - POSTGRES_PASSWORD=postgres
+    depends_on:
+      - db

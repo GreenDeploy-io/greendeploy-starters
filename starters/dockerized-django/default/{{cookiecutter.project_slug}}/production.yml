@@ -1,0 +1,116 @@
+# run migrate
+# docker-compose -f production.yml run --rm django python3 manage.py migrate
+
+# run collectstatic
+# docker-compose -f production.yml run --rm django python3 manage.py collectstatic --noinput
+
+# troubleshoot django container
+# sudo docker logs django
+
+version: "3.9"
+
+networks:
+  reverse_proxy:
+    name: {{cookiecutter.project_slug}}_reverse_proxy
+  backend:
+
+volumes:
+  production_nginx_iconf_d:
+  production_nginx_vhost_d:
+  production_nginx_html:
+  production_nginx_certs:
+  pg14_postgres_data_production:
+  pg14_postgres_backup_production:
+  node_modules_volume:
+
+services:
+  db:
+    platform: linux/amd64
+    build: ./docker/production/postgres/
+    image: {{cookiecutter.project_slug}}_production_postgres
+    container_name: postgres
+    networks:
+      - backend
+    volumes:
+      - pg14_postgres_data_production:/var/lib/postgresql/data
+      - pg14_postgres_backup_production:/backups
+    env_file:
+      - ./.envs/.production/.postgres
+    restart: always
+    ports:
+      - "5432:5432"
+
+  {{cookiecutter.docker_service_web}}:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: ./docker/production/django/Dockerfile
+    image: {{cookiecutter.project_slug}}_production_{{cookiecutter.docker_service_web}}
+    container_name: django
+    volumes:
+      - .:/code
+      - ./staticfiles/:/code/staticfiles/
+      - ./media/:/code/media/
+      # - node_modules_volume:/code/theme/static_src/node_modules/
+    env_file:
+      - ./.envs/.production/.django
+      - ./.envs/.production/.postgres
+    networks:
+      - reverse_proxy
+      - backend
+    expose:
+      - "5000"
+    command: gunicorn config.wsgi --bind=0.0.0.0:5000
+    depends_on:
+      - db
+
+  nginx:
+    platform: linux/amd64
+    build: ./docker/production/nginx/
+    container_name: nginx
+    depends_on:
+      - {{cookiecutter.docker_service_web}}
+    volumes:
+      - ./media/:/{{cookiecutter.docker_service_web}}/media/:ro
+      - ./staticfiles/:/{{cookiecutter.docker_service_web}}/staticfiles/:ro
+      - ./docker/production/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/production/nginx/ssl.conf:/etc/nginx/conf.d/ssl.conf
+      - ./docker/production/nginx/certs/{{cookiecutter.domain_name}}/:/etc/cloudflare/live/{{cookiecutter.domain_name}}/:ro
+    networks:
+      - reverse_proxy
+    ports:
+      - "80:80"
+      - "443:443"
+
+  # mailhog:
+  #   image: mailhog/mailhog:v1.0.0
+  #   ports:
+  #     - "8025:8025"
+
+  # redis:
+  #   build: ./compose/production/tech/redis/
+  #   container_name: redis
+  #   # need to make sure redis on same network else wont work
+  #   # with django using redis://redis:6379/0 as REDIS_URL
+  #   networks:
+  #     - reverse_proxy
+  #     - backend
+  #   restart: always
+
+  # huey:
+  #   build:
+  #     context: .
+  #     dockerfile: ./compose/production/platform/doap/Dockerfile
+  #   command: /start-hueyworker
+  #   networks:
+  #     - reverse_proxy
+  #     - backend
+  #   volumes:
+  #     - .:/code/
+  #   env_file:
+  #     - ./.envs/.production/.django
+  #     - ./.envs/.production/.postgres
+  #   depends_on:
+  #     - django
+  #     - postgres
+  #     - redis

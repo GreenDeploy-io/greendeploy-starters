@@ -1,0 +1,38 @@
+# To update base.txt, run:
+#
+#    source ~/.venv/py39-cookiecutter-latest/bin/activate
+#    cd /path/to/\{\{cookiecutter.project_slug\}\}/requirements
+#    pip-compile base.in
+#
+# To install in localhost, run:
+#
+#    pip-sync base.txt
+#
+
+# Django
+# ----------------------------------------------------------------
+django==3.2.10  # 2021 Dec 7 https://docs.djangoproject.com/en/3.2/releases/3.2.10/
+
+# Database
+# ----------------------------------------------------------------
+psycopg2-binary==2.9.2 # 2021 Nov 12 https://github.com/psycopg/psycopg2/releases/tag/2_9_2
+
+# Settings
+# ----------------------------------------------------------------
+django-environ==0.8.1 # 2021 Oct 20 https://github.com/joke2k/django-environ/releases/tag/v0.8.1
+pytz==2021.3  # https://github.com/stub42/pytz
+python-slugify==5.0.2  # https://github.com/un33k/python-slugify
+
+# Image
+# ----------------------------------------------------------------
+# Pillow==9.0.0  # https://github.com/python-pillow/Pillow
+
+# Authentication
+# ----------------------------------------------------------------
+django-allauth==0.47.0  # 2021 Dec 9 https://github.com/pennersr/django-allauth
+argon2-cffi==21.3.0  # https://github.com/hynek/argon2_cffi
+
+# Redis
+# ----------------------------------------------------------------
+redis==4.1.1  # https://github.com/redis/redis-py
+
