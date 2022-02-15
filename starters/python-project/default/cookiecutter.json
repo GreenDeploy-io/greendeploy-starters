@@ -1,0 +1,11 @@
+{
+    "project_slug": "abc",
+    "repo_private_or_public": "public",
+    "author_name": "Alice Bob Charlie",
+    "author_email": "alice_bob_charlie@example.com",
+    "full_path_to_your_project": "/full/path/to/your-projects/",
+    "full_path_to_pyenv": "/full/path/to/.pyenv/",
+    "full_path_to_venv": "/full/path/to/.venv/",
+    "pip_version": "pip ~= 22.0",
+    "pip_tools_version": "pip-tools ~= 6.5"
+}
