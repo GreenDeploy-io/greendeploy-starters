@@ -1,5 +1,6 @@
 {
     "project_slug": "abc",
+    "repo_private_or_public": "private",
     "domain_name": "example.com",
     "docker_service_web": "web",
     "timezone": "UTC",
