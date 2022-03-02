@@ -2,6 +2,9 @@
 # ------------------------------------------------------------------------------
 DEBUG=True
 SECRET_KEY=
+
+DJANGO_ALLOWED_HOSTS=127.0.0.1,localhost,{{ cookiecutter.project_slug }}.localhost
+
 # Redis
 # ------------------------------------------------------------------------------
 REDIS_URL=redis://redis:6379/0
