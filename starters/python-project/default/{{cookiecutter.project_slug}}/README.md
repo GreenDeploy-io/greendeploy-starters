@@ -93,3 +93,8 @@ Scenario: Calling this in python shell
     AND i call `hello_world_output`
     THEN i expect this output as string
 ```
+https://stackoverflow.com/questions/60430112/single-sourcing-package-version-for-setup-cfg-python-projects
+https://pythonrepo.com/repo/pypa-setuptools_scm-python-build-tools
+https://stackoverflow.com/questions/56883909/setuptools-scm-current-version-instead-of-next-version
+https://stackoverflow.com/questions/71090408/how-to-use-release-branch-to-increment-version-using-setuptools-scm?noredirect=1#comment125820779_71090408
+https://realpython.com/pypi-publish-python-package/#versioning-your-package
