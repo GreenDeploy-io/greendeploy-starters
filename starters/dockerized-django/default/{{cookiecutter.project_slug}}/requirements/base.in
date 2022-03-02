@@ -1,6 +1,6 @@
 # To update base.txt, run:
 #
-#    source ~/.venv/py39-cookiecutter-latest/bin/activate
+#    source ~/.venv/gd-starters-dd-default-py3812/bin/activate
 #    cd /path/to/\{\{cookiecutter.project_slug\}\}/requirements
 #    pip-compile base.in
 #
