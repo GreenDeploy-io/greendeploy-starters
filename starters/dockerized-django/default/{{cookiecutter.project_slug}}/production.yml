@@ -24,7 +24,7 @@ volumes:
   node_modules_volume:
 
 services:
-  db:
+  db_postgres:
     platform: linux/amd64
     build: ./docker/production/postgres/
     image: {{cookiecutter.project_slug}}_production_postgres
