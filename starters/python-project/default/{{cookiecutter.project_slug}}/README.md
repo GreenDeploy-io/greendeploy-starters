@@ -43,7 +43,7 @@ see as 0.0.0
 
 Make some small change and press save for example by adding either a ✅ or ❌ here  under GETTING_STARTED
 
-Then run `pip install -e` and then see `and python -m {{ cookiecutter.project_slug }}`
+Then run `pip install -e .` and then run `python -m {{ cookiecutter.project_slug }}`
 
 see `0.0.1.dev0+g3f858c4.d20220215`
 
@@ -54,7 +54,7 @@ Now run `git commit -m '♻️ REFACTOR: GETTING_STARTED.md'`
 NOW MAKE v0.0.1 tag
 Now run `git tag -a v0.0.1 -m '🔖 Second tag v0.0.1'`
 
-Then run `pip install -e` and then see `and python -m {{ cookiecutter.project_slug }}`
+Then run `pip install -e .` and then see `python -m {{ cookiecutter.project_slug }}`
 
 see `0.0.1`
 

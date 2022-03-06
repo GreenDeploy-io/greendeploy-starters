@@ -9,7 +9,8 @@ RUN mkdir /code
 WORKDIR /code
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements /requirements
-RUN pip3 install -r /requirements/local.txt
+RUN pip3 install pip-tools
+RUN pip-sync /requirements/base.txt /requirements/production.txt
 
 COPY . /code/
 
