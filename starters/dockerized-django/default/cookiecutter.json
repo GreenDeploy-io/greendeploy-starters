@@ -9,5 +9,8 @@
     "timezone": "UTC",
     "author_name": "Alice Bob Charlie",
     "author_email": "alice_bob_charlie@example.com",
-    "debug": "y"
+    "debug": "y",
+    "_copy_without_render": [
+        "*config.yml"
+    ]
 }
