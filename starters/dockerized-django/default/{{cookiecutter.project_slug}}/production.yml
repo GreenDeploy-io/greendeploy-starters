@@ -62,7 +62,7 @@ services:
       - "5000"
     command: gunicorn config.wsgi --bind=0.0.0.0:5000
     depends_on:
-      - db
+      - db_postgres
 
   nginx:
     platform: linux/amd64
