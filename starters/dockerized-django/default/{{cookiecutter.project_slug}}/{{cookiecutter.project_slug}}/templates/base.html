@@ -1,6 +1,43 @@
 {% raw %}{% load static i18n %}{% endraw %}
 
+
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Your Title Here</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
 
+
+    {% raw %}{% block custom_css %}{% endraw %}
+    {% raw %}{% endblock %}{% endraw %}
+  </head>
+
+  <body>
+    {% raw %}{% block container %}{% endraw %} {% raw %}{% endblock %}{% endraw %} {% raw %}{% block js %}{% endraw %}
+    <!-- i am assuming all these are needed for htmx to work with django -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+      integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/htmx.org@1.1.0"></script>
+    <script>
+      document.body.addEventListener("htmx:configRequest", (event) => {
+        event.detail.headers["X-CSRFToken"] = "{% raw %}{{ csrf_token }}{% endraw %}";
+      });
+    </script>
+    <!-- end for htmx with django -->
+    {% raw %}{% endblock %}{% endraw %} {% raw %}{% block custom_js %}{% endraw %} {% raw %}{% endblock %}{% endraw %}
+  </body>
 </html>
