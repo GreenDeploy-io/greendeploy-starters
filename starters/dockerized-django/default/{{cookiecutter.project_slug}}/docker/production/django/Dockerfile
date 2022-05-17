@@ -17,6 +17,13 @@ COPY . /code/
 
 # copy out /start-web
 # start-web executes `migrate` and `runserver 0.0.0.0:8000`
-COPY ./docker/local/django/start-web /start-web
-RUN sed -i 's/\r//' /start-web
-RUN chmod +x /start-web
+# COPY ./docker/local/django/start-web /start-web
+# RUN sed -i 's/\r//' /start-web
+# RUN chmod +x /start-web
+
+COPY ./docker/production/django/entrypoint /entrypoint
+COPY ./docker/production/django/ /
+
+RUN ["chmod", "+x", "/entrypoint"]
+
+ENTRYPOINT ["/entrypoint"]
