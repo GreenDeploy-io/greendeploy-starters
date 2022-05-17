@@ -1,4 +1,4 @@
-FROM ubuntu:focal-20220113
+FROM ubuntu:focal-20220426
 # because ubuntu-focal uses python3 for latest python3.9 and pip3
 
 ENV PYTHONDONTWRITEBYTECODE 1
