@@ -4,18 +4,3 @@
 #
 #    pip-compile local.in
 #
-appdirs==1.4.4
-    # via kolo
-cerberus==1.3.4
-    # via kolo
-click==7.1.2
-    # via kolo
-kolo==1.3.7
-    # via -r local.in
-toml==0.10.2
-    # via kolo
-toolz==0.11.2
-    # via kolo
-
-# The following packages are considered to be unsafe in a requirements file:
-# setuptools
