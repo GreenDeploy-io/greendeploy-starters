@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 
 import environ
+from django.core.management.utils import get_random_secret_key
 
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 # {{ cookiecutter.project_slug }}/
@@ -48,7 +49,14 @@ LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 
 # Raises Django's ImproperlyConfigured
 # exception if SECRET_KEY not in os.environ
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.getenv("DEBUG", "False") == "True"
+
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
 # URLS
 # ------------------------------------------------------------------------------
