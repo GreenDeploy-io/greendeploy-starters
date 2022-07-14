@@ -10,6 +10,8 @@ argon2-cffi-bindings==21.2.0
     # via argon2-cffi
 asgiref==3.3.4
     # via django
+async-timeout==4.0.2
+    # via redis
 certifi==2021.10.8
     # via requests
 cffi==1.15.0
@@ -24,13 +26,13 @@ defusedxml==0.7.1
     # via python3-openid
 deprecated==1.2.13
     # via redis
-django==3.2.12
+django==3.2.14
     # via
     #   -r base.in
     #   django-allauth
 django-allauth==0.49.0
     # via -r base.in
-django-environ==0.8.1
+django-environ==0.9.0
     # via -r base.in
 idna==3.3
     # via requests
@@ -46,15 +48,15 @@ pyjwt[crypto]==2.3.0
     # via django-allauth
 pyparsing==3.0.7
     # via packaging
-python-slugify==6.1.1
+python-slugify==6.1.2
     # via -r base.in
 python3-openid==3.2.0
     # via django-allauth
-pytz==2021.3
+pytz==2022.1
     # via
     #   -r base.in
     #   django
-redis==4.1.4
+redis==4.3.4
     # via -r base.in
 requests==2.27.1
     # via
