@@ -10,8 +10,10 @@ https://greendeploy.io/en/3.2/concepts/settings/
 """
 # inspired by https://github.com/cookiecutter/cookiecutter-django/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/config/settings/base.py
 import os
+import sys
 from pathlib import Path
 
+import dj_database_url
 import environ
 from django.core.management.utils import get_random_secret_key
 
@@ -102,7 +104,7 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-user-model
-AUTH_USER_MODEL = "users.User"
+AUTH_USER_MODEL = "users.CustomUser"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
 LOGIN_REDIRECT_URL = "users:redirect"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
@@ -181,6 +183,13 @@ TEMPLATES = [
     },
 ]
 
+if len(sys.argv) > 1 and NEED_DATABASE_URL:
+    if os.getenv("DATABASE_URL", None) is None:
+        raise Exception("DATABASE_URL environment variable not defined")
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+    }
+
 # SECURITY
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#session-cookie-httponly
@@ -210,10 +219,6 @@ ADMIN_URL = "admin/"
 ADMINS = [("""{{cookiecutter.author_name}}""", "{{cookiecutter.author_email}}")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
-
-# Assume Postgres settings in .envs/.local/.postgres or .envs/.production/.postgres
-# and relies on BASE_DIR/docker/production/django/entrypoint to build DATABASE_URL
-DATABASES = {"default": env.db("DATABASE_URL")}
 
 # CACHES = {
 #     # Read os.environ['CACHE_URL'] and raises
