@@ -11,7 +11,7 @@ class UserFactory(factory.django.DjangoModelFactory):
     name = factory.Faker("name")
 
     class Meta:
-        model = "users.User"
+        model = "users.CustomUser"
         django_get_or_create = ("username",)
 
     @factory.post_generation

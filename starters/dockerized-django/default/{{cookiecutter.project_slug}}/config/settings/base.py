@@ -183,6 +183,11 @@ TEMPLATES = [
     },
 ]
 
+DOESNOT_NEED_DATABASE_URL = ["collectstatic", "tailwind", ]
+NEED_DATABASE_URL = sys.argv[1] not in DOESNOT_NEED_DATABASE_URL
+
+# print(sys.argv)
+
 if len(sys.argv) > 1 and NEED_DATABASE_URL:
     if os.getenv("DATABASE_URL", None) is None:
         raise Exception("DATABASE_URL environment variable not defined")

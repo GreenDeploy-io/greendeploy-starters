@@ -29,6 +29,8 @@ RUN apt-get install vim -y
 
 RUN pip install --upgrade pip==22.0.4
 
+RUN apt-get update
+
 # for other standard libraries
 RUN apt-get install -y --no-install-recommends \
     # psycopg2 dependencies
