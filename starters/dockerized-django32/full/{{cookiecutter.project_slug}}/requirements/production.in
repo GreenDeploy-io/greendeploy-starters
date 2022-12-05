@@ -1,0 +1,12 @@
+# To update production.txt, run:
+#
+#    pip-compile production.in
+#
+# To install in prod, run:
+#
+#    pip-sync base.txt production.txt
+#
+
+-c base.txt
+
+gunicorn==20.1.0  # https://github.com/benoitc/gunicorn

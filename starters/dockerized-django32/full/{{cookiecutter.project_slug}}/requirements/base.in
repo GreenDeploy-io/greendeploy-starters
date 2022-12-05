@@ -1,0 +1,40 @@
+# To update base.txt, run:
+#
+#    source ~/.venv/gd-starters-dd-default-py3812/bin/activate
+#    cd /path/to/\{\{cookiecutter.project_slug\}\}/requirements
+#    pip-compile base.in
+#
+# To install in localhost, run:
+#
+#    pip-sync base.txt
+#
+
+# Django
+# ----------------------------------------------------------------
+django==3.2.16  # 2022 Oct https://docs.djangoproject.com/en/4.0/releases/3.2.14/
+
+# Database
+# ----------------------------------------------------------------
+psycopg2-binary==2.9.5 # 2022 Oct https://github.com/psycopg/psycopg2/releases/tag/2_9_3
+# 2022 Jun https://github.com/jazzband/dj-database-url/releases/tag/v1.0.0
+git+https://github.com/jazzband/dj-database-url@v1.0.0#egg=dj-database-url
+
+# Settings
+# ----------------------------------------------------------------
+django-environ==0.9.0 # 2022 Jun https://github.com/joke2k/django-environ/releases/tag/v0.9.0
+pytz==2022.6  # 2022 Nov https://github.com/stub42/pytz
+python-slugify==6.1.2  # 2022 Apr https://github.com/un33k/python-slugify
+
+# Image
+# ----------------------------------------------------------------
+# Pillow==9.0.0  # https://github.com/python-pillow/Pillow
+
+# Authentication
+# ----------------------------------------------------------------
+django-allauth==0.51.0  # 2022 Jun https://github.com/pennersr/django-allauth
+argon2-cffi==21.3.0  # https://github.com/hynek/argon2_cffi
+
+# Redis
+# ----------------------------------------------------------------
+redis==4.3.5  # 2022 Nov https://github.com/redis/redis-py
+
