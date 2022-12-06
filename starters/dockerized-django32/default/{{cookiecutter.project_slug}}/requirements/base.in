@@ -37,4 +37,3 @@ argon2-cffi==21.3.0  # https://github.com/hynek/argon2_cffi
 # Redis
 # ----------------------------------------------------------------
 redis==4.3.5  # 2022 Nov https://github.com/redis/redis-py
-
