@@ -82,6 +82,8 @@ THIRD_PARTY_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "tailwind",
+    "theme",
 ]
 
 LOCAL_APPS = [
@@ -289,3 +291,13 @@ STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# TAILWIND
+# ------------------------------------------------------------------------------
+TAILWIND_APP_NAME = 'theme'
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+# END TAILWIND

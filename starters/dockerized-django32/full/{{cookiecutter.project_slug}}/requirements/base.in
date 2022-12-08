@@ -68,3 +68,4 @@ django-lifecycle==1.0.0  # https://github.com/rsinger86/django-lifecycle
 # ------------------------------------------------------------------------------
 webargs==8.1.0 # https://github.com/marshmallow-code/webargs
 marshmallow==3.14.1 # https://github.com/marshmallow-code/marshmallow
+

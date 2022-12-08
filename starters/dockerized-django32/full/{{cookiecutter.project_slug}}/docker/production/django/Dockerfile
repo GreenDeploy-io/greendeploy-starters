@@ -46,6 +46,30 @@ RUN apt-get install -y --no-install-recommends \
 
 # End of Postgres requirement
 
+#########################################
+#
+# Tailwind needs
+#   node and npm
+#     and node needs curl
+#########################################
+RUN apt-get update
+
+# to install node
+RUN apt-get install -y curl
+
+# for getting latest LTS version
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash
+
+RUN apt-get install -y --fix-missing \
+    # for tailwind and no need to install npm cause node now comes with it prepackaged
+    nodejs
+
+# As of 2022-12-08 Thursday LTS node 18.12.1 (includes npm 8.19.2)
+# check at https://nodejs.org/en/download/
+RUN npm install -g npm@8.19.2
+
+# End of Tailwind requirement
+
 RUN rm -rf /var/lib/apt/lists/* && \
     apt-get -y clean
 
