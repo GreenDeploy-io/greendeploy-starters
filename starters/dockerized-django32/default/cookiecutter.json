@@ -1,5 +1,5 @@
 {
-    "project_name": "abc",
+    "project_name": "{{ cookiecutter.project_name }}",
     "repo_name": "{{ cookiecutter.project_name.replace(' ', '-').lower().strip('-') }}",
     "project_slug": "{{ cookiecutter.project_name.replace(' ', '_').replace('-', '_').lower().strip('-') }}",
     "repo_private_or_public": "private",

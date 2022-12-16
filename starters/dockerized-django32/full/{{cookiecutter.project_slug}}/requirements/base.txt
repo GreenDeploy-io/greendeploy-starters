@@ -67,7 +67,9 @@ django==3.2.16
     #   django-htmx
     #   django-lifecycle
     #   django-organizations
+    #   django-readers
     #   django-tailwind
+    #   django-zen-queries
     #   heroicons
 django-allauth==0.51.0
     # via -r base.in
@@ -81,7 +83,11 @@ django-lifecycle==1.0.0
     # via -r base.in
 django-organizations==2.0.1
     # via -r base.in
+django-readers==2.0.0
+    # via -r base.in
 django-tailwind==3.4.0
+    # via -r base.in
+django-zen-queries==2.1.0
     # via -r base.in
 heroicons[django]==2.1.0
     # via -r base.in

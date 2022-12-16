@@ -18,8 +18,8 @@ import environ
 from django.core.management.utils import get_random_secret_key
 
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
-# {{ cookiecutter.project_slug }}/
-APPS_DIR = ROOT_DIR / "{{ cookiecutter.project_slug }}"
+# base/
+APPS_DIR = ROOT_DIR / "base"
 env = environ.Env()
 
 READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", default=False)
@@ -87,7 +87,7 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    "{{ cookiecutter.project_slug }}.users",
+    "base.users",
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -96,7 +96,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # MIGRATIONS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
-MIGRATION_MODULES = {"sites": "{{ cookiecutter.project_slug }}.contrib.sites.migrations"}
+MIGRATION_MODULES = {"sites": "base.contrib.sites.migrations"}
 
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
@@ -291,6 +291,25 @@ STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# STARTER
+# ------------------------------------------------------------------------------
+STARTER = {
+    "project_name": "{{ cookiecutter.project_name }}",
+    "repo_name": "{{ cookiecutter.project_name.replace(' ', '-').lower().strip('-') }}",
+    "project_slug": "{{ cookiecutter.project_name.replace(' ', '_').replace('-', '_').lower().strip('-') }}",
+    "repo_private_or_public": "private",
+    "greendeploy_version": "{{ cookiecutter.greendeploy_version }}",
+    "domain_name": "example.com",
+    "docker_service_web": "web_django",
+    "timezone": "UTC",
+    "author_name": "Alice Bob Charlie",
+    "author_email": "alice_bob_charlie@example.com",
+    "debug": "y",
+    "_copy_without_render": [
+        "*config.yml"
+    ]
+}
 
 # TAILWIND
 # ------------------------------------------------------------------------------

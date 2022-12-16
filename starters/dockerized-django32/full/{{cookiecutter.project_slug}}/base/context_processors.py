@@ -7,6 +7,7 @@ def settings_values(request):
     """
     return {
         # "DEBUG": settings.DEBUG,
+        "STARTER": settings.STARTER,
     }
 
 

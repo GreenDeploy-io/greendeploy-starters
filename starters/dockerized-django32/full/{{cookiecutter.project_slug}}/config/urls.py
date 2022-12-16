@@ -22,18 +22,38 @@ from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 
-urlpatterns = [
+basic_urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
     path(
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
+]
+
+admin_urlpatterns = [
     # Django Admin, use {% raw %}{% url 'admin:index' %}{% endraw %}
     path(settings.ADMIN_URL, admin.site.urls),
+]
+
+account_urlpatterns = [
     # User management
-    path("users/", include("{{ cookiecutter.project_slug }}.users.urls", namespace="users")),
+    path("users/", include("base.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
+]
+
+base_urlpatterns = [
+    # base starter urls
+    path("base/", include("base.urls")),
+]
+
+custom_urlpatterns = [
     # Your stuff: custom urls includes go here
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+urlpatterns = basic_urlpatterns + \
+    admin_urlpatterns + \
+    account_urlpatterns + \
+    custom_urlpatterns + \
+    static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     # This allows the error pages to be debugged during development, just visit
