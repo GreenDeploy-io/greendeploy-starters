@@ -1,27 +1,18 @@
-from django.contrib.auth.models import AbstractUser
-from django.db.models import CharField
-from django.urls import reverse
+from base.fields import CaseInsensitiveEmailField
 from django.utils.translation import gettext_lazy as _
+from improved_user.model_mixins import AbstractUser
 
 
-class CustomUser(AbstractUser):
+class User(AbstractUser):
     """
-    Default custom user model for {{cookiecutter.project_name}}.
+    Default custom user model for project.
     If adding fields that need to be filled at user signup,
     check forms.SignupForm and forms.SocialSignupForms accordingly.
     """
 
-    #: First and last name do not cover name patterns around the globe
-    name = CharField(_("Name of User"), blank=True, max_length=255)
-    first_name = None  # type: ignore
-    last_name = None  # type: ignore
+    # because want to override the RFC 5321 for case sensitivity
+    # see https://django-improved-user.readthedocs.io/en/latest/email_warning.html
+    email = CaseInsensitiveEmailField(_("email address"), max_length=254, unique=True)
 
     def __str__(self):
-        return self.email
-
-    def get_absolute_url(self):
-        """Get url for user's detail view.
-        Returns:
-            str: URL for user detail.
-        """
-        return reverse("users:detail", kwargs={"username": self.username})
+        return f"{self.full_name} ({self.email})" if self.full_name else self.email

@@ -65,6 +65,7 @@ django==3.2.16
     #   django-allauth
     #   django-browser-reload
     #   django-htmx
+    #   django-improved-user
     #   django-lifecycle
     #   django-organizations
     #   django-readers
@@ -78,6 +79,8 @@ django-browser-reload==1.6.0
 django-environ==0.9.0
     # via -r base.in
 django-htmx==1.13.0
+    # via -r base.in
+django-improved-user==2.0a2
     # via -r base.in
 django-lifecycle==1.0.0
     # via -r base.in

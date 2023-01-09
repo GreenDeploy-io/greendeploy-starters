@@ -1,7 +1,7 @@
 {% raw %}{% load static %}{% endraw %}
 {% raw %}{% load static tailwind_tags %}{% endraw %}
 {% raw %}{% load heroicons %}{% endraw %}
-
+{% raw %}{% load i18n %}{% endraw %}
 <!--
   This example requires Tailwind CSS v2.0+
 
@@ -34,6 +34,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>{% raw %}{{ STARTER.project_name }}{% endraw %} - Signup</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/GreenDeploy-io/simple-svg/main/square-000000-V.svg" type="image/svg+xml">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="author" content="" />
@@ -50,71 +51,55 @@
   <body class="h-full">
     <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div class="sm:mx-auto sm:w-full sm:max-w-md">
-        <img class="mx-auto h-12 w-auto" src="{% raw %}{% static 'assets/v-sq.svg' %}{% endraw %}" alt="{% raw %}{{ STARTER.project_name }}{% endraw %}">
+        <img class="mx-auto h-12 w-auto" src="https://raw.githubusercontent.com/GreenDeploy-io/simple-svg/main/square-000000-V.svg" alt="{% raw %}{{ STARTER.project_name }}{% endraw %}">
         <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Get Started</h2>
       </div>
 
       <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div class="bg-white py-8 px-4 border shadow sm:rounded-lg sm:px-10">
-          <form class="space-y-6" action="/signup" method="POST">
+          <form class="space-y-6" id="signup_form" method="POST" action="{% raw %}{% url 'account_signup' %}{% endraw %}">
+            <!-- logic https://github.com/pennersr/django-allauth/blob/master/allauth/templates/account/signup.html -->
+            {% raw %}{% csrf_token %}{% endraw %}
+            {% raw %}{% if redirect_field_value %}{% endraw %}
+            <input type="hidden" name="{% raw %}{{ redirect_field_name }}{% endraw %}" value="{% raw %}{{ redirect_field_value }}{% endraw %}" />
+            {% raw %}{% endif %}{% endraw %}
             <p class="text-center text-sm">
               Sign up in easy mode. We'll never share your email. <!-- answer objection here such as We'll never post without asking -->
             </p>
             <div>
               <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
               <div class="mt-1">
-                <input id="email" name="email" type="email" autocomplete="email" required class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                <input id="email" name="email" type="email" autocomplete="email" required class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-amber-500 sm:text-sm">
               </div>
             </div>
 
             <div>
               <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
               <div class="mt-1">
-                <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                <!-- note django-allauth expects password1 -->
+                <input id="password1" name="password1" type="password" autocomplete="current-password" required class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-amber-500 focus:outline-none focus:ring-amber-500 sm:text-sm">
               </div>
             </div>
 
-            <div class="flex items-center justify-between">
+            <!-- <div class="flex items-center justify-between">
               <div class="flex items-center">
-                <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-amber-600 focus:ring-amber-500">
                 <label for="remember-me" class="ml-2 block text-sm text-gray-900">Remember me</label>
               </div>
 
               <div class="text-sm">
-                <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Forgot your password?</a>
+                <a href="#" class="font-medium text-amber-600 hover:text-amber-500">Forgot your password?</a>
               </div>
-            </div>
+            </div> -->
 
             <div>
-              <button type="submit" class="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Get Started</button>
+              <button type="submit" class="flex w-full justify-center rounded-md border border-transparent bg-amber-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2">{% raw %}{% trans "Get Started" %}{% endraw %}</button>
             </div>
           </form>
 
         </div>
       </div>
     </div>
-  {% raw %}{% block js %}{% endraw %}
-    <!-- i am assuming all these are needed for htmx to work with django -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
-      integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://unpkg.com/htmx.org@1.1.0"></script>
-    <script>
-      document.body.addEventListener("htmx:configRequest", (event) => {
-        event.detail.headers["X-CSRFToken"] = "{% raw %}{{ csrf_token }}{% endraw %}";
-      });
-    </script>
-    <!-- end for htmx with django -->
-    {% raw %}{% endblock %}{% endraw %}
-
 
 
     {% raw %}{% block custom_js %}{% endraw %}

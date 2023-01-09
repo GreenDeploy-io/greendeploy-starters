@@ -1,0 +1,41 @@
+<!-- Why Inter? https://tailwindui.com/documentation -->
+<?xml-stylesheet href="https://rsms.me/inter/inter.css" type="text/css"?>
+<svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16">
+  <style>
+    .text {
+      /* viewBox="0 0 512 512"*/
+      /* how to set color, size, etc https://developer.mozilla.org/en-US/docs/Web/SVG/Element/text */
+      font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,  "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      fill: white;
+      font-size: 384px; /* always 0.75 of sq height */
+      /* square sizes: 512, 256, 128, 64, 48, 32, 16 */
+      /* font   sizes: 384, 192,  96, 48, 36, 24, 12 */
+    }
+  </style>
+  <script xmlns="http://www.w3.org/2000/svg" type="text/javascript"><![CDATA[
+		window.addEventListener('load', function () {
+      const sizes = [512, 256, 128, 64, 48, 32, 16];
+			const parameters = new URLSearchParams(window.location.search);
+      // 881337
+			const colorParameter = parameters.get('c') || parameters.get('color') || "000000";
+      const textParameter = parameters.get('t') || parameters.get('text') || "A";
+      var sizeParameter = parameters.get('s') || parameters.get('size') || sizes[0];
+      if (sizes.indexOf(sizeParameter) === -1) {
+        sizeParameter = sizes[0];
+      }
+			const firstRect = document.querySelector('rect');
+      const firstText = document.querySelector('text');
+      const firstSvg = document.querySelector('svg');
+      firstRect.style.fill = '#' + colorParameter;
+      firstRect.style.width = sizeParameter;
+      firstRect.style.height = sizeParameter;
+      firstSvg.style.width = sizeParameter;
+      firstSvg.style.height = sizeParameter;
+      firstText.innerHTML = textParameter.substring(0, 1).toUpperCase();
+      firstText.style.fontSize = sizeParameter * 0.75 + 'px';
+		}, false);
+	]]></script>
+  <rect x="0" y="0" width="16" height="16" fill="#ffffff"/>
+  <!-- How to properly center https://stackoverflow.com/a/53297135/80353 -->
+  <text class="text" x="50%" y="50%" dominant-baseline="central" text-anchor="middle">Z</text>
+</svg>

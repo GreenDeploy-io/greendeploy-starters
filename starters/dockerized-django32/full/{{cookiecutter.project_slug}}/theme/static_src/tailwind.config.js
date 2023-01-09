@@ -42,7 +42,23 @@ module.exports = {
         // '../../**/*.py'
     ],
     theme: {
-        extend: {},
+        extend: {
+            // "colors": {
+            //     /* https://uicolors.app/edit?sv1=astra:50-fdfbe9/100-fcf6bf/200-fbec8d/300-f8da4c/400-f3c51c/500-e3ad0f/600-c4850a/700-9c5f0c/800-824b11/900-6e3e15 */
+            //     'astra': {
+            //         '50': '#fdfbe9',
+            //         '100': '#fcf6bf',
+            //         '200': '#fbec8d',
+            //         '300': '#f8da4c',
+            //         '400': '#f3c51c',
+            //         '500': '#e3ad0f',
+            //         '600': '#c4850a',
+            //         '700': '#9c5f0c',
+            //         '800': '#824b11',
+            //         '900': '#6e3e15',
+            //     }
+            // }
+        },
     },
     plugins: [
         /**

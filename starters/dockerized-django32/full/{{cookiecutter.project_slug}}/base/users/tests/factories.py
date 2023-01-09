@@ -5,14 +5,13 @@ TEST_USER_PASSWORD = "password"
 
 
 class UserFactory(factory.django.DjangoModelFactory):
-    username = factory.Sequence(lambda n: f"user-{n}")
     email = factory.Sequence(lambda n: f"user-{n}@example.com")
     password = factory.PostGenerationMethodCall("set_password", TEST_USER_PASSWORD)
     name = factory.Faker("name")
 
     class Meta:
-        model = "users.CustomUser"
-        django_get_or_create = ("username",)
+        model = "users.User"
+        django_get_or_create = ("name",)
 
     @factory.post_generation
     def groups(self, create, extracted, **kwargs):

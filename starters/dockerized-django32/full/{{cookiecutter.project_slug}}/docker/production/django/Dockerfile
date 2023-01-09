@@ -1,4 +1,4 @@
-FROM ubuntu:jammy-20221101
+FROM ubuntu:jammy-20221130
 # because ubuntu-focal uses python3 for latest python3.9 and pip3
 
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -27,7 +27,7 @@ RUN apt-get install git -y
 
 RUN apt-get install vim -y
 
-RUN pip install --upgrade pip==22.0.4
+RUN pip install --upgrade pip==22.3.1
 
 RUN apt-get update
 

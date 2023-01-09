@@ -1,40 +1,44 @@
-from django import forms
 from django.contrib import admin
-from django.contrib.auth import get_user_model
-from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
-from django.contrib.auth.forms import UserChangeForm, UserCreationForm
+from django.contrib.auth import admin as auth_admin
+from django.utils.translation import gettext_lazy as _
 
-User = get_user_model()
-
-
-class MyUserChangeForm(UserChangeForm):
-    class Meta(UserChangeForm.Meta):
-        model = User
-
-
-class MyUserCreationForm(UserCreationForm):
-
-    error_message = UserCreationForm.error_messages.update(
-        {"duplicate_username": "This username has already been taken."}
-    )
-
-    class Meta(UserCreationForm.Meta):
-        model = User
-
-    def clean_username(self):
-        username = self.cleaned_data["username"]
-        try:
-            User.objects.get(username=username)
-        except User.DoesNotExist:
-            return username
-
-        raise forms.ValidationError(self.error_messages["duplicate_username"])
+from .models import User
 
 
 @admin.register(User)
-class MyUserAdmin(AuthUserAdmin):
-    form = MyUserChangeForm
-    add_form = MyUserCreationForm
-    fieldsets = (("User Profile", {"fields": ("name",)}),) + AuthUserAdmin.fieldsets
-    list_display = ("username", "name", "is_superuser")
-    search_fields = ["name"]
+class UserAdmin(auth_admin.UserAdmin):
+    fieldsets = (
+        (None, {"fields": ("email", "password")}),
+        (_("Personal info"), {"fields": ("full_name", "short_name")}),
+        (
+            _("Permissions"),
+            {
+                "fields": (
+                    "is_active",
+                    "is_staff",
+                    "is_superuser",
+                    "groups",
+                    "user_permissions",
+                ),
+            },
+        ),
+        (_("Important dates"), {"fields": ("last_login", "date_joined")}),
+    )
+    add_fieldsets = (
+        (
+            None,
+            {
+                "classes": ("wide",),
+                "fields": (
+                    "email",
+                    "full_name",
+                    "short_name",
+                    "password1",
+                    "password2",
+                ),
+            },
+        ),
+    )
+    list_display = ["id", "full_name", "short_name", "is_staff", "is_superuser"]
+    search_fields = ["full_name", "short_name"]
+    ordering = ("-date_joined",)

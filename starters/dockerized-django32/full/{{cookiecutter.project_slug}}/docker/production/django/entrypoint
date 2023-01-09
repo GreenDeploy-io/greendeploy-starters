@@ -4,7 +4,13 @@ set -o errexit
 # must comment out pipefail for debian-based images
 # set -o pipefail
 set -o nounset
+set -o xtrace
 
+# django-tailwind
+if [ ! -d /code/theme/static_src/node_modules ]; then
+    python3 manage.py tailwind install
+fi;
+# end for django-tailwind
 
 # N.B. If only .env files supported variable expansion...
 # export CELERY_BROKER_URL="${REDIS_URL}"

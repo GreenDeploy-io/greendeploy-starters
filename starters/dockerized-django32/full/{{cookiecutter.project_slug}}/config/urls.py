@@ -18,7 +18,7 @@ Inspired by https://github.com/cookiecutter/cookiecutter-django/blob/master/%7B%
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 
@@ -42,16 +42,19 @@ account_urlpatterns = [
 
 base_urlpatterns = [
     # base starter urls
-    path("base/", include("base.urls")),
+    re_path(r"^base/", include("base.urls", namespace="base")),
 ]
 
 custom_urlpatterns = [
     # Your stuff: custom urls includes go here
+    # for django-tailwind browser reload
+    path("__reload__/", include("django_browser_reload.urls")),
 ]
 
 urlpatterns = basic_urlpatterns + \
     admin_urlpatterns + \
     account_urlpatterns + \
+    base_urlpatterns + \
     custom_urlpatterns + \
     static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

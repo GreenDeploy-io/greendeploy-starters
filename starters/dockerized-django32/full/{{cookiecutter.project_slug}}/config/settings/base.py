@@ -84,14 +84,21 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
     "tailwind",
     "theme",
+    'django_browser_reload',
+    "heroicons",
+    "organizations"
 ]
 
-LOCAL_APPS = [
+BASE_APPS = [
     "base.users",
 ]
 
+LOCAL_APPS = [
+
+]
+
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + BASE_APPS + LOCAL_APPS
 
 # MIGRATIONS
 # ------------------------------------------------------------------------------
@@ -106,11 +113,23 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-user-model
-AUTH_USER_MODEL = "users.CustomUser"
+AUTH_USER_MODEL = "users.User"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
 LOGIN_REDIRECT_URL = "users:redirect"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
 LOGIN_URL = "account_login"
+
+# django-allauth
+# ------------------------------------------------------------------------------
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "optional"
+
+# END django-allauth
 
 # PASSWORDS
 # ------------------------------------------------------------------------------
@@ -123,13 +142,16 @@ PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
+# https://django-improved-user.readthedocs.io/en/latest/quickstart.html
+AUTH_PREFIX = 'django.contrib.auth.password_validation.'
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+        'NAME': f'{AUTH_PREFIX}UserAttributeSimilarityValidator',
+        'OPTIONS': {'user_attributes': ('email',)},
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
+    {"NAME": f"{AUTH_PREFIX}MinimumLengthValidator"},
+    {"NAME": f"{AUTH_PREFIX}CommonPasswordValidator"},
+    {"NAME": f"{AUTH_PREFIX}NumericPasswordValidator"},
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#middleware
@@ -144,6 +166,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     # "core.middleware.RequestDomainMiddleware",
     # "last_active.middleware.LastActiveMiddleware",
+    # for tailwind browser reload
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 # STATIC
@@ -170,7 +194,11 @@ MEDIA_URL = "/media/"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [str(APPS_DIR / "templates")],
+        "DIRS": [
+            str(APPS_DIR / "templates"),
+            str(ROOT_DIR / "theme" / "templates" ),
+            str(ROOT_DIR / "theme" / "templates" / "base"),
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -179,6 +207,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                # custom template context processors in base.context_processors
+                "base.context_processors.settings_values",
             ],
             # "builtins": ["pattern_library.loader_tags"],
         },
@@ -222,10 +252,6 @@ EMAIL_TIMEOUT = 5
 # ------------------------------------------------------------------------------
 # Django Admin URL.
 ADMIN_URL = "admin/"
-# https://docs.djangoproject.com/en/dev/ref/settings/#admins
-ADMINS = [("""{{cookiecutter.author_name}}""", "{{cookiecutter.author_email}}")]
-# https://docs.djangoproject.com/en/dev/ref/settings/#managers
-MANAGERS = ADMINS
 
 # CACHES = {
 #     # Read os.environ['CACHE_URL'] and raises
@@ -247,25 +273,6 @@ MANAGERS = ADMINS
 #         "NAME": BASE_DIR / "db.sqlite3",
 #     }
 # }
-
-
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
-
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
-]
 
 
 # Internationalization
@@ -320,3 +327,8 @@ INTERNAL_IPS = [
 ]
 
 # END TAILWIND
+
+# DJANGO-ORGANIZATIONS
+# ------------------------------------------------------------------------------
+ORGS_SLUGFIELD = 'base.fields.AutoSlugField'
+# END DJANGO-ORGANIZATIONS
