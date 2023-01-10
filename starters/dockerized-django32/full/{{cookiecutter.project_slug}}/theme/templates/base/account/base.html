@@ -1,0 +1,85 @@
+{% raw %}{% load static tailwind_tags %}{% endraw %}
+{% raw %}{% load heroicons %}{% endraw %}
+{% raw %}{% load i18n %}{% endraw %}
+{% raw %}{% load account socialaccount %}{% endraw %}
+
+<!--
+  This example requires Tailwind CSS v2.0+
+
+  This example requires some changes to your config:
+
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+<!--
+  This example requires updating your template:
+
+  ```
+  <html class="h-full bg-white">
+  <body class="h-full">
+  ```
+-->
+<!DOCTYPE html>
+<html lang="en"  class="h-full bg-white">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{% raw %}{{ STARTER.project_name }}{% endraw %} - {% raw %}{% block head_title %}{% endraw %}{% raw %}{% endblock %}{% endraw %}</title>
+    {% raw %}{% block extra_head %}{% endraw %}
+    {% raw %}{% endblock %}{% endraw %}
+    <link rel="icon" href="https://raw.githubusercontent.com/GreenDeploy-io/simple-svg/main/square-000000-V.svg" type="image/svg+xml">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <!-- <link rel="icon" href=""> -->
+    {% raw %}{% tailwind_css %}{% endraw %}
+    {% raw %}{% if AMPLITUDE_TEMPLATE %}{% endraw %}
+    {% raw %}{% include AMPLITUDE_TEMPLATE %}{% endraw %}
+    {% raw %}{% endif %}{% endraw %}
+    {% raw %}{% if CRISP_TEMPLATE %}{% endraw %}
+    {% raw %}{% include CRISP_TEMPLATE %}{% endraw %}
+    {% raw %}{% endif %}{% endraw %}
+  </head>
+  <body class="h-full">
+    <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
+    {% raw %}{% block body %}{% endraw %}
+      {% raw %}{% if messages %}{% endraw %}
+      <div>
+        <strong>Messages:</strong>
+        <ul>
+          {% raw %}{% for message in messages %}{% endraw %}
+          <li>{% raw %}{{message}}{% endraw %}</li>
+          {% raw %}{% endfor %}{% endraw %}
+        </ul>
+      </div>
+      {% raw %}{% endif %}{% endraw %}
+
+      <!-- <div>
+        <strong>Menu:</strong>
+        <ul>
+          {% raw %}{% if user.is_authenticated %}{% endraw %}
+          <li><a href="{% raw %}{% url 'account_email' %}{% endraw %}">Change E-mail</a></li>
+          <li><a href="{% raw %}{% url 'account_logout' %}{% endraw %}">Sign Out</a></li>
+          {% raw %}{% else %}{% endraw %}
+          <li><a href="{% raw %}{% url 'account_login' %}{% endraw %}">Sign In</a></li>
+          <li><a href="{% raw %}{% url 'account_signup' %}{% endraw %}">Sign Up</a></li>
+          {% raw %}{% endif %}{% endraw %}
+        </ul>
+      </div> -->
+        {% raw %}{% block content %}{% endraw %}
+        {% raw %}{% endblock %}{% endraw %}
+    {% raw %}{% endblock %}{% endraw %}
+    {% raw %}{% block extra_body %}{% endraw %}
+    {% raw %}{% endblock %}{% endraw %}
+    </div>
+  </body>
+</html>
