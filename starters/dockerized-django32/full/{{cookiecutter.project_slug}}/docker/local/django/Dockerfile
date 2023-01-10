@@ -1,12 +1,12 @@
-FROM ubuntu:jammy-20221130
-# because ubuntu-focal uses python3 for latest python3.9 and pip3
+FROM ubuntu:jammy-20221216
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update
 
-# needed for universe repository
+# Needed for universe repository
+# Django 3.2 LTS supports up to python 3.10
 RUN apt-get install -y software-properties-common python3.10-venv
 
 ENV VIRTUAL_ENV=/opt/venv

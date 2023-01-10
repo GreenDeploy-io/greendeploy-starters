@@ -31,7 +31,7 @@ python-slugify==6.1.2  # 2022 Apr https://github.com/un33k/python-slugify
 
 # Authentication
 # ----------------------------------------------------------------
-django-allauth==0.51.0  # 2022 Jun https://github.com/pennersr/django-allauth
+django-allauth==0.52.0  # 2022 Jun https://github.com/pennersr/django-allauth
 django-improved-user==2.0a2  # 2022 Jan https://github.com/jambonsw/django-improved-user/releases/tag/v2.0a2
 argon2-cffi==21.3.0  # https://github.com/hynek/argon2_cffi
 
