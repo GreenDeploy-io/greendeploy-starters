@@ -1,0 +1,41 @@
+{% raw %}{% extends "account/base.html" %}{% endraw %}
+
+{% raw %}{% load static tailwind_tags %}{% endraw %}
+{% raw %}{% load heroicons %}{% endraw %}
+{% raw %}{% load i18n %}{% endraw %}
+{% raw %}{% load account socialaccount %}{% endraw %}
+
+{% raw %}{% block head_title %}{% endraw %}{% raw %}{% trans "Sign Out" %}{% endraw %}{% raw %}{% endblock %}{% endraw %}
+
+{% raw %}{% block content %}{% endraw %}
+
+      <div class="sm:mx-auto sm:w-full sm:max-w-md">
+        <img class="mx-auto h-12 w-auto" src="https://raw.githubusercontent.com/GreenDeploy-io/simple-svg/main/square-000000-V.svg" alt="{% raw %}{{ STARTER.project_name }}{% endraw %}">
+        <h2 class="text-center mt-6 text-3xl font-bold tracking-tight text-gray-900">{% raw %}{% trans "Sign Out" %}{% endraw %}</h2>
+        <p class="text-center mt-2 text-sm text-gray-600">
+            {% raw %}{% trans 'Are you sure you want to sign out?' %}{% endraw %}
+        </p>
+      </div>
+
+    {% raw %}{% if user.is_authenticated %}{% endraw %}
+    {% raw %}{% include "account/snippets/already_logged_in.html" %}{% endraw %}
+    {% raw %}{% endif %}{% endraw %}
+
+      <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div class="bg-white py-8 px-4 border shadow sm:rounded-lg sm:px-10">
+
+          <form method="POST" action="{% raw %}{% url 'account_logout' %}{% endraw %}" class="space-y-6">
+            {% raw %}{% csrf_token %}{% endraw %}
+            {% raw %}{% if redirect_field_value %}{% endraw %}
+            <input type="hidden" name="{% raw %}{{ redirect_field_name }}" value="{{ redirect_field_value }}{% endraw %}"/>
+            {% raw %}{% endif %}{% endraw %}
+            <div>
+              <button type="submit" class="flex w-full justify-center rounded-md border border-transparent bg-amber-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2">
+                {% raw %}{% trans 'Sign Out' %}{% endraw %}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+{% raw %}{% endblock %}{% endraw %}
