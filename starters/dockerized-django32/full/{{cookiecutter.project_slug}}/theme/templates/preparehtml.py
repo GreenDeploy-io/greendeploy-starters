@@ -64,6 +64,30 @@ def prepare_html_in_dir(dirpath):
                 filepath = os.path.join(root, file)
                 prepare_html_for_cookiecutter(filepath)
 
+def remove_all_raw_tags(filepath):
+    # Open the file in read mode
+    with open(filepath, 'r') as file:
+        # Read the contents of the file
+        text = file.read()
+
+    # because the g<0> will cause the existing {% raw %} to double
+    # so need to remove the extra {% raw %} and {% endraw %}
+    text = re.sub(
+        r'({% raw %})+|({% endraw %})+',
+        '', text, flags=re.IGNORECASE)
+
+    # Open the file in write mode
+    with open(filepath, 'w') as file:
+        # Write the modified content to the file
+        file.write(text)
+
+def remove_raw_tags_in_dir(dirpath):
+    for root, dirs, files in os.walk(dirpath):
+        for file in files:
+            if file.endswith('.html'):
+                filepath = os.path.join(root, file)
+                remove_all_raw_tags(filepath)
+
 #######################################################################
 #         Some logic to find and display available functions          #
 #######################################################################

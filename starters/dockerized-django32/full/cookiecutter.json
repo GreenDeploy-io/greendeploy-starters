@@ -11,6 +11,8 @@
     "author_email": "alice_bob_charlie@example.com",
     "debug": "y",
     "_copy_without_render": [
-        "*config.yml"
+        "*config.yml",
+        "*preparehtml.py",
+        "*.html"
     ]
 }

@@ -1,7 +1,7 @@
-{% raw %}{% load static %}{% endraw %}
-{% raw %}{% load static tailwind_tags %}{% endraw %}
-{% raw %}{% load heroicons %}{% endraw %}
-{% raw %}{% load i18n %}{% endraw %}
+{% load static %}
+{% load static tailwind_tags %}
+{% load heroicons %}
+{% load i18n %}
 <!--
   This example requires Tailwind CSS v2.0+
 
@@ -33,36 +33,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>{% raw %}{{ STARTER.project_name }}{% endraw %} - Signup</title>
+    <title>{{ STARTER.project_name }} - Signup</title>
     <link rel="icon" href="https://raw.githubusercontent.com/GreenDeploy-io/simple-svg/main/square-000000-V.svg" type="image/svg+xml">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="author" content="" />
     <!-- <link rel="icon" href=""> -->
-    {% raw %}{% tailwind_css %}{% endraw %}
-    {% raw %}{% if AMPLITUDE_TEMPLATE %}{% endraw %}
-    {% raw %}{% include AMPLITUDE_TEMPLATE %}{% endraw %}
-    {% raw %}{% endif %}{% endraw %}
-    {% raw %}{% if CRISP_TEMPLATE %}{% endraw %}
-    {% raw %}{% include CRISP_TEMPLATE %}{% endraw %}
-    {% raw %}{% endif %}{% endraw %}
+    {% tailwind_css %}
+    {% if AMPLITUDE_TEMPLATE %}
+    {% include AMPLITUDE_TEMPLATE %}
+    {% endif %}
+    {% if CRISP_TEMPLATE %}
+    {% include CRISP_TEMPLATE %}
+    {% endif %}
   </head>
 
   <body class="h-full">
     <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div class="sm:mx-auto sm:w-full sm:max-w-md">
-        <img class="mx-auto h-12 w-auto" src="https://raw.githubusercontent.com/GreenDeploy-io/simple-svg/main/square-000000-V.svg" alt="{% raw %}{{ STARTER.project_name }}{% endraw %}">
+        <img class="mx-auto h-12 w-auto" src="https://raw.githubusercontent.com/GreenDeploy-io/simple-svg/main/square-000000-V.svg" alt="{{ STARTER.project_name }}">
         <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Get Started</h2>
       </div>
 
       <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div class="bg-white py-8 px-4 border shadow sm:rounded-lg sm:px-10">
-          <form class="space-y-6" id="signup_form" method="POST" action="{% raw %}{% url 'account_signup' %}{% endraw %}">
+          <form class="space-y-6" id="signup_form" method="POST" action="{% url 'account_signup' %}">
             <!-- logic https://github.com/pennersr/django-allauth/blob/master/allauth/templates/account/signup.html -->
-            {% raw %}{% csrf_token %}{% endraw %}
-            {% raw %}{% if redirect_field_value %}{% endraw %}
-            <input type="hidden" name="{% raw %}{{ redirect_field_name }}{% endraw %}" value="{% raw %}{{ redirect_field_value }}{% endraw %}" />
-            {% raw %}{% endif %}{% endraw %}
+            {% csrf_token %}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
             <p class="text-center text-sm">
               Sign up in easy mode. We'll never share your email. <!-- answer objection here such as We'll never post without asking -->
             </p>
@@ -93,7 +93,7 @@
             </div> -->
 
             <div>
-              <button type="submit" class="flex w-full justify-center rounded-md border border-transparent bg-amber-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2">{% raw %}{% trans "Get Started" %}{% endraw %}</button>
+              <button type="submit" class="flex w-full justify-center rounded-md border border-transparent bg-amber-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2">{% trans "Get Started" %}</button>
             </div>
           </form>
 
@@ -102,7 +102,7 @@
     </div>
 
 
-    {% raw %}{% block custom_js %}{% endraw %}
-    {% raw %}{% endblock %}{% endraw %}
+    {% block custom_js %}
+    {% endblock %}
 </body>
 </html>
