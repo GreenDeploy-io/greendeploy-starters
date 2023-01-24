@@ -52,16 +52,18 @@
   <body class="h-full">
     <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
     {% block body %}
-      <!-- {% if messages %}
+      {% if messages %}
       <div>
         <strong>Messages:</strong>
         <ul>
           {% for message in messages %}
-          <li>{{message}}</li>
+          <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+            {{message}}</li>
           {% endfor %}
         </ul>
       </div>
-      {% endif %} -->
+      {% endif %}
 
       <!-- <div>
         <strong>Menu:</strong>
@@ -71,7 +73,7 @@
           <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
           {% else %}
           <li><a href="{% url 'account_login' %}">Sign In</a></li>
-          <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+          <li><a href="{% url 'account_signup' %}">Start X-ing</a></li>
           {% endif %}
         </ul>
       </div> -->
