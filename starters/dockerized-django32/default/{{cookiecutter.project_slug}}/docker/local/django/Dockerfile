@@ -1,5 +1,5 @@
-FROM ubuntu:jammy-20221101
-# because ubuntu-focal uses python3 for latest python3.9 and pip3
+FROM ubuntu:jammy-20230308
+# because ubuntu-focal uses python3 for latest python3.10 and pip3
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -27,7 +27,7 @@ RUN apt-get install git -y
 
 RUN apt-get install vim -y
 
-RUN pip install --upgrade pip==22.0.4
+RUN pip install --upgrade pip==23.0.1
 
 RUN apt-get update
 
@@ -45,7 +45,7 @@ WORKDIR /code
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements /requirements
-RUN pip install pip-tools
+RUN pip install pip-tools==6.12.3
 RUN pip-sync /requirements/base.txt /requirements/local.txt
 
 COPY . /code/

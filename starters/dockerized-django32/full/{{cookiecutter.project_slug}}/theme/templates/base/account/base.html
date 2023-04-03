@@ -83,5 +83,16 @@
     {% block extra_body %}
     {% endblock %}
     </div>
+    {% block global_notification %}
+    <!-- the .html files in theme/templates/base/components/notifications should display here -->
+    {% if messages %}
+      {% for message in messages %}
+        {% include "components/notifications/simple.html" with message=message  %}
+      <!-- <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        {{message}}</li> -->
+      {% endfor %}
+    {% endif %}
+    {% endblock %}
   </body>
 </html>

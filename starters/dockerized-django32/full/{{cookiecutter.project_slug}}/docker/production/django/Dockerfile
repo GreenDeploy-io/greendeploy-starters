@@ -1,4 +1,4 @@
-FROM ubuntu:jammy-20221216
+FROM ubuntu:jammy-20230308
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -27,7 +27,7 @@ RUN apt-get install git -y
 
 RUN apt-get install vim -y
 
-RUN pip install --upgrade pip==22.3.1
+RUN pip install --upgrade pip==23.0.1
 
 RUN apt-get update
 
@@ -64,9 +64,9 @@ RUN apt-get install -y --fix-missing \
     # for tailwind and no need to install npm cause node now comes with it prepackaged
     nodejs
 
-# As of 2022-12-08 Thursday LTS node 18.12.1 (includes npm 8.19.2)
+# As of 2023-04-03 Latest LTS Version: 18.15.0 (includes npm 9.5.0)
 # check at https://nodejs.org/en/download/
-RUN npm install -g npm@8.19.2
+RUN npm install -g npm@9.5.0
 
 # End of Tailwind requirement
 
@@ -78,7 +78,7 @@ WORKDIR /code
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements /requirements
-RUN pip install pip-tools
+RUN pip install pip-tools==6.12.3
 RUN pip-sync /requirements/base.txt /requirements/production.txt
 
 COPY . /code/
