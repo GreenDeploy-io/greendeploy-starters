@@ -1,0 +1,43 @@
+# To update base.txt, run:
+#
+#    use the alias `ubuntu-default-pip-compile-venv` instead
+#    source ~/.venv/to-pip-compile-py3xxyy/bin/activate
+#    cd /path/to/\{\{cookiecutter.project_slug\}\}/requirements
+#    pip-compile base.in
+#
+# To install in localhost, run:
+#
+#    pip-sync base.txt
+#
+
+# Django
+# ----------------------------------------------------------------
+django==4.2rc1  # 2023 Mar https://pypi.org/project/Django/4.2rc1/
+
+# Database
+# ----------------------------------------------------------------
+psycopg==3.1.8 # 2023 Jan https://pypi.org/project/psycopg/3.1.8/
+dj-database-url==1.2.0 # 2022 Dec https://pypi.org/project/dj-database-url/1.2.0/
+
+# Settings
+# ----------------------------------------------------------------
+# not yet 4.2 django-environ==0.10.0 # 2023 Feb https://github.com/joke2k/django-environ/releases/tag/v0.10.0
+git+https://github.com/simkimsia/django-environ@v0.11.0-django42rc1#egg=django-environ
+pytz==2022.7.1  # 2023 Jan https://pypi.org/project/pytz/2022.7.1/
+python-slugify==8.0.1  # 2023 Feb https://pypi.org/project/python-slugify/8.0.1/
+
+# Image
+# ----------------------------------------------------------------
+# Pillow==9.0.0  # https://github.com/python-pillow/Pillow
+
+# Authentication
+# ----------------------------------------------------------------
+# not yet 4.2 django-allauth==0.53.1  # 2023 Mar https://pypi.org/project/django-allauth/0.53.1/
+git+https://github.com/simkimsia/django-allauth@v0.54.0-django42rc1#egg=django-allauth
+# we use argon2 because https://docs.djangoproject.com/en/dev/topics/auth/passwords/#using-argon2-with-django
+# better than Django's default and better than bcrypt
+argon2-cffi==21.3.0  # Dec 2021 https://pypi.org/project/argon2-cffi/21.3.0/
+
+# Redis
+# ----------------------------------------------------------------
+redis==4.5.3  # 2023 Mar https://pypi.org/project/redis/4.5.3/

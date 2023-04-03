@@ -1,0 +1,16 @@
+{
+    "project_name": "{{ cookiecutter.project_name }}",
+    "repo_name": "{{ cookiecutter.project_name.replace(' ', '-').lower().strip('-') }}",
+    "project_slug": "{{ cookiecutter.project_name.replace(' ', '_').replace('-', '_').lower().strip('-') }}",
+    "repo_private_or_public": "private",
+    "greendeploy_version": "{{ cookiecutter.greendeploy_version }}",
+    "domain_name": "example.com",
+    "docker_service_web": "web_django",
+    "timezone": "UTC",
+    "author_name": "Alice Bob Charlie",
+    "author_email": "alice_bob_charlie@example.com",
+    "debug": "y",
+    "_copy_without_render": [
+        "*config.yml"
+    ]
+}

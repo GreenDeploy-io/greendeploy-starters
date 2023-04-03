@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -o errexit
+# must comment out pipefail for debian-based images
+# set -o pipefail
+set -o nounset
+set -o xtrace
+
+
+python3 manage.py migrate
+python3 manage.py runserver 0.0.0.0:8000

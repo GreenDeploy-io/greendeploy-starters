@@ -1,0 +1,156 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+version: 2.1
+
+# adding dockerhub auth because dockerhub change their policy
+# See https://discuss.circleci.com/t/authenticate-with-docker-to-avoid-impact-of-nov-1st-rate-limits/37567/23
+# and https://support.circleci.com/hc/en-us/articles/360050623311-Docker-Hub-rate-limiting-FAQ
+docker-auth: &docker-auth
+  auth:
+    username: $DOCKERHUB_PASSWORD
+    password: $DOCKERHUB_PAT
+
+orbs:
+  codecov: codecov/codecov@3.2.2
+
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      # use `-browsers` prefix for selenium tests, e.g. `3.7.7-browsers`
+      - image: cimg/python:3.8.12
+        # use YAML merge
+        # https://discuss.circleci.com/t/updated-authenticate-with-docker-to-avoid-impact-of-nov-1st-rate-limits/37567/35?u=kimsia
+        <<: *docker-auth
+        environment:
+          DATABASE_URL: postgresql://root@localhost/circle_test?sslmode=disable
+          USE_DOCKER: no
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      - image: cimg/postgres:14.1 # database image for service container available at `localhost:<port>`
+        # use YAML merge
+        # https://discuss.circleci.com/t/updated-authenticate-with-docker-to-avoid-impact-of-nov-1st-rate-limits/37567/35?u=kimsia
+        <<: *docker-auth
+        environment: # environment variables for database
+          POSTGRES_USER: root
+          POSTGRES_DB: circle_test
+
+    working_directory: ~/repo
+
+    # can check if resource is suitable at resources tab in builds
+    resource_class: large
+
+    # turn on parallelism to speed up
+    parallelism: 4
+
+    steps: # a collection of executable commands
+      # add ssh key when needed
+      # - add_ssh_keys:
+      #     fingerprints:
+      #       - "ab:cd"
+      - checkout # special step to check out source code to the working directory
+      # using dockerize to wait for dependencies
+      - run:
+          name: install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.3.0
+      # the actual wait for database
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - restore_cache: # restores saved dependency cache if the Branch key template or requirements.txt files have not changed since the previous run
+          key: v001-deps1-{{ .Branch }}-{{ checksum "requirements/circleci.txt" }}
+      - run: # install and activate virtual environment with pip
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install --upgrade setuptools && pip install wheel
+            pip install --upgrade pip
+            pip install -r requirements/circleci.txt
+      - save_cache: # special step to save dependency cache
+          key: v001-deps1-{{ .Branch }}-{{ checksum "requirements/circleci.txt" }}
+          paths:
+            - "venv"
+      - run:
+          name: run collectstatic
+          command: |
+            . venv/bin/activate
+            python manage.py collectstatic --noinput
+      - run: # run tests
+          # note the --parallel flag using 8 which is based on xlarge resource class
+          name: run tests
+          command: |
+            # get test files while ignoring __init__ files
+            TESTFILES=$(circleci tests glob "*/tests/*.py" | sed 's/\S\+__init__.py//g' | sed 's/\S\+factories.py//g')
+            echo $TESTFILES | tr ' ' '\n' | sort | uniq > circleci_test_files.txt
+            TESTFILES=$(circleci tests split --split-by=timings circleci_test_files.txt | tr "/" "." | sed 's/\.py//g')
+            . venv/bin/activate
+            # coverage's --parallel-mode will generate a .coverage-{random} file
+            # usage: https://docs.djangoproject.com/en/4.0/topics/testing/advanced/#integration-with-coverage-py
+            # we add an `--omit` here to get rid of Coverage's warnings
+            # See related: https://github.com/nedbat/coveragepy/issues/905
+            # check .coveragerc where we have source and omit
+            # add `--verbosity=3` between $TESTFILES --keepdb if need to debug
+            coverage run --parallel-mode manage.py test --failfast $TESTFILES --keepdb
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
+          destination: tr1
+      # save coverage file to workspace
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - .coverage*
+  fan-in_coverage:
+    docker:
+      # specify the version you desire here
+      # use `-browsers` prefix for selenium tests, e.g. `3.7.7-browsers`
+      - image: cimg/python:3.7.7
+        # use YAML merge
+        # https://discuss.circleci.com/t/updated-authenticate-with-docker-to-avoid-impact-of-nov-1st-rate-limits/37567/35?u=kimsia
+        <<: *docker-auth
+    working_directory: ~/repo
+    resource_class: small
+    parallelism: 1
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+      - restore_cache: # restores saved dependency cache if the Branch key template or requirements.txt files have not changed since the previous run
+          key: v001-deps1-{{ .Branch }}-{{ checksum "requirements/circleci.txt" }}
+      - run: # install and activate virtual environment with pip
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install --upgrade setuptools && pip install wheel
+            pip install --upgrade pip
+            pip install -r requirements/circleci.txt
+      - save_cache: # special step to save dependency cache
+          key: v001-deps1-{{ .Branch }}-{{ checksum "requirements/circleci.txt" }}
+          paths:
+            - "venv"
+      - run:
+          name: combine coverage and generate XML report
+          command: |
+            . venv/bin/activate
+            coverage combine
+            # at this point, if combine succeeded, we should see a combined .coverage file
+            ls -lah .coverage
+            # this will generate a .coverage.xml file
+            coverage xml
+      - codecov/upload:
+          # xtra_args: '-F'
+          upload_name: '${CIRCLE_BUILD_NUM}'
+workflows:
+  main:
+    jobs:
+      - build
+      - fan-in_coverage:
+          requires:
+            - build

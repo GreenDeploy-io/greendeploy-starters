@@ -1,0 +1,12 @@
+# To update local.txt, run:
+#
+#    pip-compile local.in
+#
+# To install in local, run:
+#
+#    pip-sync base.txt local.txt
+#
+
+-c base.txt
+
+# kolo==1.3.7  # https://github.com/kolofordjango/kolo#installation

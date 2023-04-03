@@ -1,0 +1,9 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+# POSTGRES_HOST should point to the service name declared in
+# local.yml or production.yml
+POSTGRES_HOST=db_postgres
+POSTGRES_PORT=5432
+POSTGRES_DB={{ cookiecutter.project_slug }}
+POSTGRES_USER=debug
+POSTGRES_PASSWORD=debug
