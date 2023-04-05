@@ -12,7 +12,7 @@
 
 # Django
 # ----------------------------------------------------------------
-django==4.2rc1  # 2023 Mar https://pypi.org/project/Django/4.2rc1/
+django==4.2  # 2023 Apr https://pypi.org/project/Django/4.2/
 
 # Database
 # ----------------------------------------------------------------
