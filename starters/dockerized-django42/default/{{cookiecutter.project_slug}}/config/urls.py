@@ -35,7 +35,7 @@ urlpatterns = [
 if "allauth" in settings.INSTALLED_APPS:
     urlpatterns += [
         # User management
-        path("users/", include("{{ cookiecutter.project_slug }}.users.urls", namespace="users")),
+        path("users/", include("base.users.urls", namespace="users")),
         path("accounts/", include("allauth.urls")),
     ]
 
