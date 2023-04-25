@@ -19,19 +19,15 @@ postgres_ready() {
 python3 << END
 import sys
 
-import psycopg2
+import psycopg
 
 try:
-    print("Going to use psycopg2 to connect to postgres")
-    psycopg2.connect(
-        dbname="${POSTGRES_DB}",
-        user="${POSTGRES_USER}",
-        password="${POSTGRES_PASSWORD}",
-        host="${POSTGRES_HOST}",
-        port="${POSTGRES_PORT}",
+    print("Going to use psycopg which is psycopg3 to connect to postgres")
+    psycopg.connect(
+        "${DATABASE_URL}"
     )
-    print("psycopg2 successfully connected to postgres")
-except psycopg2.OperationalError as err:
+    print("psycopg successfully connected to postgres")
+except psycopg.OperationalError as err:
     print("Op error: {0}".format(err))
     sys.exit(-1)
 sys.exit(0)
