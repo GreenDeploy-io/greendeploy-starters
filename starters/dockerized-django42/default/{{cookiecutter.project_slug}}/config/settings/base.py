@@ -19,8 +19,8 @@ from django.core.management.utils import get_random_secret_key
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
-# {{ cookiecutter.project_slug }}/
-APPS_DIR = BASE_DIR / "{{ cookiecutter.project_slug }}"
+# {{ cookiecutter.project_slug }}/ might want to change this to "domains"
+APPS_DIR = BASE_DIR / "domains"
 env = environ.Env()
 
 if READ_DOT_ENV_FILE := env.bool("DJANGO_READ_DOT_ENV_FILE", default=False):
@@ -167,7 +167,7 @@ MEDIA_URL = "/media/"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [str(APPS_DIR / "templates")],
+        "DIRS": [str(APPS_DIR / "templates"), str(BASE_DIR / "base")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
