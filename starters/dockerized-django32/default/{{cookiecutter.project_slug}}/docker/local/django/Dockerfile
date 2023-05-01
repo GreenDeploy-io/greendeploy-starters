@@ -4,10 +4,10 @@ FROM ubuntu:jammy-20230308
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN apt-get update
+RUN apt-get update --fix-missing
 
 # needed for universe repository
-RUN apt-get install -y software-properties-common python3.10-venv
+RUN apt-get install -y software-properties-common build-essential python3.10-venv
 
 ENV VIRTUAL_ENV=/opt/venv
 

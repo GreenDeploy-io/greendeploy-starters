@@ -3,11 +3,11 @@ FROM ubuntu:jammy-20230308
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN apt-get update
+RUN apt-get update --fix-missing
 
 # Needed for universe repository
 # Django 3.2 LTS supports up to python 3.10
-RUN apt-get install -y software-properties-common python3.10-venv
+RUN apt-get install -y software-properties-common build-essential python3.10-venv
 
 ENV VIRTUAL_ENV=/opt/venv
 

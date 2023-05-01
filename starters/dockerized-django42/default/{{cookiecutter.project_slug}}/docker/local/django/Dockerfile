@@ -4,10 +4,10 @@ FROM ubuntu:jammy-20230308
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN apt-get update
+RUN apt-get update --fix-missing
 
 # needed for universe repository
-RUN apt-get install -y software-properties-common python3.10-venv
+RUN apt-get install -y software-properties-common build-essential python3.10-venv
 
 ENV VIRTUAL_ENV=/opt/venv
 
@@ -21,7 +21,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y tzdata
 RUN add-apt-repository universe
 
 # cause everytime add apt-reposutory need to update to work
-RUN apt-get update
+RUN apt-get update --fix-missing
 
 RUN apt-get install git -y
 
@@ -34,7 +34,7 @@ RUN apt-get update
 # for other standard libraries
 RUN apt-get install -y --no-install-recommends \
     # psycopg2 dependencies
-    libpq-dev gcc python3-dev
+    libpq-dev gcc python3.10-dev
 
 
 RUN rm -rf /var/lib/apt/lists/* && \
