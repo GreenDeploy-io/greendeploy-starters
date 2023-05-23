@@ -4,6 +4,7 @@
     "repo_private_or_public": "public",
     "domain_name": "example.com",
     "docker_service_web": "web_django",
+    "debug": "y",
     "timezone": "UTC",
     "owner_login": "GITHUB_SELECTED_OWNER_LOGIN",
     "some_other_variable": "some_other_value",
