@@ -9,4 +9,4 @@
 
 -c base.txt
 
-gunicorn==20.1.0  # https://github.com/benoitc/gunicorn
+gunicorn==20.1.0  # 2021 Mar https://pypi.org/project/gunicorn/20.1.0/

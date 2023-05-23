@@ -12,18 +12,20 @@
 
 # Django
 # ----------------------------------------------------------------
-django==4.2  # 2023 Apr https://pypi.org/project/Django/4.2/
+django==4.2.1  # 2023 May https://pypi.org/project/Django/4.2/
 
 # Database
 # ----------------------------------------------------------------
-psycopg==3.1.8 # 2023 Jan https://pypi.org/project/psycopg/3.1.8/
-dj-database-url==1.2.0 # 2022 Dec https://pypi.org/project/dj-database-url/1.2.0/
+psycopg==3.1.9 # 2023 May https://pypi.org/project/psycopg/3.1.9/
+dj-database-url==2.0.0 # 2023 Apr https://pypi.org/project/dj-database-url/2.0.0/
 
 # Settings
 # ----------------------------------------------------------------
-# not yet 4.2 django-environ==0.10.0 # 2023 Feb https://github.com/joke2k/django-environ/releases/tag/v0.10.0
-git+https://github.com/simkimsia/django-environ@v0.11.0-django42rc1#egg=django-environ
-pytz==2022.7.1  # 2023 Jan https://pypi.org/project/pytz/2022.7.1/
+# django-environ==0.10.0 # 2023 Feb https://github.com/joke2k/django-environ/releases/tag/v0.10.0
+# has NOT supported Django 4.2 yet
+# see https://github.com/simkimsia/django-environ/releases/tag/v0.11.1-django42 for details
+git+https://github.com/simkimsia/django-environ@v0.11.1-django42#egg=django-environ
+pytz==2023.3  # 2023 Mar https://pypi.org/project/pytz/2023.3/
 python-slugify==8.0.1  # 2023 Feb https://pypi.org/project/python-slugify/8.0.1/
 
 # Image
@@ -32,12 +34,13 @@ python-slugify==8.0.1  # 2023 Feb https://pypi.org/project/python-slugify/8.0.1/
 
 # Authentication
 # ----------------------------------------------------------------
-# not yet 4.2 django-allauth==0.53.1  # 2023 Mar https://pypi.org/project/django-allauth/0.53.1/
-git+https://github.com/simkimsia/django-allauth@v0.54.0-django42rc1#egg=django-allauth
+# not yet 4.2 django-allauth==0.54.0  # 2023 Apr https://pypi.org/project/django-allauth/0.54.0/
+# see https://github.com/simkimsia/django-allauth/releases/tag/v0.54.1-django42 for details
+git+https://github.com/simkimsia/django-allauth@v0.54.1-django42#egg=django-allauth
 # we use argon2 because https://docs.djangoproject.com/en/dev/topics/auth/passwords/#using-argon2-with-django
 # better than Django's default and better than bcrypt
 argon2-cffi==21.3.0  # Dec 2021 https://pypi.org/project/argon2-cffi/21.3.0/
 
 # Redis
 # ----------------------------------------------------------------
-redis==4.5.3  # 2023 Mar https://pypi.org/project/redis/4.5.3/
+redis==4.5.5  # 2023 May https://pypi.org/project/redis/4.5.5/

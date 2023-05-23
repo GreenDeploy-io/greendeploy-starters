@@ -1,4 +1,4 @@
-FROM ubuntu:jammy-20230308
+FROM ubuntu:jammy-20230425
 # because ubuntu-jammy uses python3 for latest python3.10 and pip3
 
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -27,7 +27,7 @@ RUN apt-get install git -y
 
 RUN apt-get install vim -y
 
-RUN pip install --upgrade pip==23.0.1
+RUN pip install --upgrade pip==23.1.2
 
 RUN apt-get update
 
