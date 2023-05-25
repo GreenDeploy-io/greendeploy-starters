@@ -35,8 +35,8 @@ python-slugify==8.0.1  # 2023 Feb https://pypi.org/project/python-slugify/8.0.1/
 # Authentication
 # ----------------------------------------------------------------
 # not yet 4.2 django-allauth==0.54.0  # 2023 Apr https://pypi.org/project/django-allauth/0.54.0/
-# see https://github.com/simkimsia/django-allauth/releases/tag/v0.54.1-django42 for details
-git+https://github.com/simkimsia/django-allauth@v0.54.1-django42#egg=django-allauth
+# see https://github.com/simkimsia/django-allauth/releases/tag/v0.55.0-django42 for details
+git+https://github.com/simkimsia/django-allauth@v0.55.0-django42#egg=django-allauth
 # we use argon2 because https://docs.djangoproject.com/en/dev/topics/auth/passwords/#using-argon2-with-django
 # better than Django's default and better than bcrypt
 argon2-cffi==21.3.0  # Dec 2021 https://pypi.org/project/argon2-cffi/21.3.0/

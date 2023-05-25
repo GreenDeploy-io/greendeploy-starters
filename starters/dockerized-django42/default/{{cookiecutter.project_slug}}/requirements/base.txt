@@ -31,7 +31,7 @@ django==4.2.1
     #   -r base.in
     #   dj-database-url
     #   django-allauth
-django-allauth @ git+https://github.com/simkimsia/django-allauth@v0.54.1-django42
+django-allauth @ git+https://github.com/simkimsia/django-allauth@v0.55.0-django42
     # via -r base.in
 django-environ @ git+https://github.com/simkimsia/django-environ@v0.11.1-django42
     # via -r base.in
