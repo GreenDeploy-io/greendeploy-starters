@@ -18,8 +18,17 @@ Format should be:
 
 `<emoji><space><keyword>:<space><Capitalized Verb><rest of sentence with no period>`
 
+For specific starterkit:
+
+`<emoji><space><keyword>(starter-name):<space><Capitalized Verb><rest of sentence with no period>`
+
+E.g.
+
+📝 docs(django42/default): Update CHANGELOG.md
+
+
 ## By Common Examples
 
 ✨ feat: Add new starter django42/default
-📝 docs: Add CHANGELOG.md in django42/default
+📝 docs(django42/default): Add CHANGELOG.md
 
