@@ -167,7 +167,7 @@ MEDIA_URL = "/media/"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [str(APPS_DIR / "templates"), str(BASE_DIR / "base")],
+        "DIRS": [str(APPS_DIR / "templates"), str(BASE_DIR / "base" / "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
