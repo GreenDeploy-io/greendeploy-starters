@@ -4,7 +4,7 @@ DEBUG=True
 SECRET_KEY=!!SECRETKEYHERE!!
 
 # .domain.com allows all the subdomains such as s1.domain.com
-DJANGO_ALLOWED_HOSTS=127.0.0.1,localhost,{{ cookiecutter.project_slug }}.localhost
+DJANGO_ALLOWED_HOSTS=127.0.0.1,localhost,{{ cookiecutter.project_noslug }}.localhost
 
 # Redis
 # ------------------------------------------------------------------------------

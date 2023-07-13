@@ -1,4 +1,4 @@
-FROM ubuntu:jammy-20230425
+FROM ubuntu:jammy-20230522
 # because ubuntu-jammy uses python3 for latest python3.10 and pip3
 
 ENV PYTHONDONTWRITEBYTECODE 1

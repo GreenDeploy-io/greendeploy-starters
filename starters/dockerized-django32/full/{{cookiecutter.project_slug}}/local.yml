@@ -18,6 +18,8 @@ services:
       - "5432:5432"
   {{cookiecutter.docker_service_web}}:
     platform: linux/amd64
+    stdin_open: true
+    tty: true
     build:
       context: .
       dockerfile: ./docker/local/django/Dockerfile
