@@ -1,0 +1,17 @@
+# To update base.txt, run:
+#
+#    use the alias `ubuntu-default-pip-compile-venv` instead
+#    source ~/.venv/to-pip-compile-py3xxyy/bin/activate
+#    cd /path/to/\{\{cookiecutter.project_slug\}\}/requirements
+#    pip-compile base.in
+#
+# To install in localhost, run:
+#
+#    pip-sync base.txt
+#
+
+-c base-base.txt
+
+# ----------------------------------------------------------------
+# Domains
+# ----------------------------------------------------------------

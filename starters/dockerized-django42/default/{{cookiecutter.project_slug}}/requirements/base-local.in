@@ -1,0 +1,14 @@
+# To update base-local.txt, run:
+#
+#    pip-compile base-local.in
+#
+# To install in local, run:
+#
+#    pip-sync base-base.txt base-local.txt
+#
+
+-c base-base.txt
+
+ipdb==0.13.*  # 2023 Mar https://pypi.org/project/ipdb/0.13.13/
+
+# kolo==1.3.7  # https://github.com/kolofordjango/kolo#installation

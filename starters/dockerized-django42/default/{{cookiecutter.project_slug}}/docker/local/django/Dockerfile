@@ -1,4 +1,4 @@
-FROM ubuntu:jammy-20230308
+FROM ubuntu:jammy-20230624
 # because ubuntu-jammy uses python3 for latest python3.10 and pip3
 
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -27,7 +27,8 @@ RUN apt-get install git -y
 
 RUN apt-get install vim -y
 
-RUN pip install --upgrade pip==23.0.1
+# April 2023 pip==23.1.2
+RUN pip install --upgrade pip==23.1.2
 
 RUN apt-get update
 
@@ -45,8 +46,10 @@ WORKDIR /code
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements /requirements
-RUN pip install pip-tools==6.12.3
-RUN pip-sync /requirements/base.txt /requirements/local.txt
+
+# July 2023 pip-tools==6.14.0
+RUN pip install pip-tools==6.14.0
+RUN pip-sync /requirements/base-base.txt /requirements/base-local.txt /requirements/domains-base.txt /requirements/domains-local.txt
 
 COPY . /code/
 
