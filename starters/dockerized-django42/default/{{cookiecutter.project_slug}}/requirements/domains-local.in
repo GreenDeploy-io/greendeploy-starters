@@ -7,6 +7,6 @@
 #    pip-sync domains-base.txt domains-local.txt
 #
 
--c base.txt ../../base/requirements/local.txt
+-c base-base.txt base-local.txt domains-base.txt
 
 # Add your local requirements here for domains
