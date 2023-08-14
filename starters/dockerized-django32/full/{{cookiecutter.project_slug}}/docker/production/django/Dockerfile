@@ -1,12 +1,17 @@
-FROM ubuntu:jammy-20230308
+# because ubuntu-jammy uses python3 for latest python3.10 and pip3
+FROM ubuntu:jammy-20230624
+
+# Create it as a "system" user without a home directory (-r)
+# Do not force a specific numeric uid
+# see https://stackoverflow.com/a/76850816/80353 for details
+RUN useradd -r app_user
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN apt-get update --fix-missing
+RUN apt-get update
 
-# Needed for universe repository
-# Django 3.2 LTS supports up to python 3.10
+# needed for universe repository
 RUN apt-get install -y software-properties-common build-essential python3.10-venv
 
 ENV VIRTUAL_ENV=/opt/venv
@@ -27,7 +32,11 @@ RUN apt-get install git -y
 
 RUN apt-get install vim -y
 
-RUN pip install --upgrade pip==23.0.1
+# To ensure pip3 works
+RUN apt-get install python3-pip -y
+
+# April 2023 pip==23.1.2
+RUN pip3 install --upgrade pip==23.1.2
 
 RUN apt-get update
 
@@ -46,30 +55,6 @@ RUN apt-get install -y --no-install-recommends \
 
 # End of Postgres requirement
 
-#########################################
-#
-# Tailwind needs
-#   node and npm
-#     and node needs curl
-#########################################
-RUN apt-get update
-
-# to install node
-RUN apt-get install -y curl
-
-# for getting latest LTS version
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash
-
-RUN apt-get install -y --fix-missing \
-    # for tailwind and no need to install npm cause node now comes with it prepackaged
-    nodejs
-
-# As of 2023-04-03 Latest LTS Version: 18.15.0 (includes npm 9.5.0)
-# check at https://nodejs.org/en/download/
-RUN npm install -g npm@9.5.0
-
-# End of Tailwind requirement
-
 RUN rm -rf /var/lib/apt/lists/* && \
     apt-get -y clean
 
@@ -78,8 +63,10 @@ WORKDIR /code
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements /requirements
-RUN pip install pip-tools==6.12.3
-RUN pip-sync /requirements/base.txt /requirements/production.txt
+
+# July 2023 pip-tools==6.14.0
+RUN pip3 install pip-tools==6.14.0
+RUN pip-sync /requirements/base-base.txt /requirements/base-production.txt /requirements/domains-base.txt /requirements/domains-production.txt
 
 COPY . /code/
 
@@ -93,6 +80,10 @@ COPY . /code/
 COPY ./docker/production/django/entrypoint /entrypoint
 COPY ./docker/production/django/ /
 
-RUN ["chmod", "+x", "/entrypoint"]
+RUN chmod +x /entrypoint
 
+# Specify the alternate user with the rest of the runtime metadata
+# Prevent CWE ID 020
+# Dockerfile Misconfiguration: Default User Privilege
+USER app_user
 ENTRYPOINT ["/entrypoint"]
