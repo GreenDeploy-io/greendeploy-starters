@@ -14,12 +14,13 @@ from pathlib import Path
 
 import dj_database_url
 import environ
+
 # inspired by https://github.com/cookiecutter/cookiecutter-django/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/config/settings/base.py
 from django.core.management.utils import get_random_secret_key
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
-# {{ cookiecutter.project_slug }}/ might want to change this to "domains"
+# this template uses "domains"
 APPS_DIR = BASE_DIR / "domains"
 env = environ.Env()
 
@@ -180,7 +181,10 @@ TEMPLATES = [
     },
 ]
 
-DOESNOT_NEED_DATABASE_URL = ["collectstatic", "tailwind", ]
+DOESNOT_NEED_DATABASE_URL = [
+    "collectstatic",
+    "tailwind",
+]
 NEED_DATABASE_URL = sys.argv[1] not in DOESNOT_NEED_DATABASE_URL
 
 # print(sys.argv)
