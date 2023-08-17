@@ -24,7 +24,7 @@ cryptography==41.0.2
     # via pyjwt
 defusedxml==0.7.1
     # via python3-openid
-dj-database-url==2.0.0
+dj-database-url==2.1.0
     # via -r base-base.in
 django==4.2.3
     # via

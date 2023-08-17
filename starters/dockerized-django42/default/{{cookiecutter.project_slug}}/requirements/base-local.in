@@ -9,6 +9,8 @@
 
 -c base-base.txt
 
+# how to debug see
+# docker attach {{cookiecutter.project_slug}}-{{cookiecutter.docker_service_web}}-1 --detach-keys="k,k"
 ipdb==0.13.*  # 2023 Mar https://pypi.org/project/ipdb/0.13.13/
 
 # kolo==1.3.7  # https://github.com/kolofordjango/kolo#installation
