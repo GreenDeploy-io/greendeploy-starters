@@ -1,6 +1,6 @@
 """
 # BEGIN_REPLACE
-# {{ cookiecutter.project_slug }} => {{ {{ cookiecutter.project_slug }} }}
+# {{ cookiecutter.project_slug }} => {{ '{{ cookiecutter.project_slug }}' }}
 # REPLACE_START
 URL configuration for {{ cookiecutter.project_slug }} project.
 # REPLACE_END

@@ -40,8 +40,8 @@ def update_site_forward(apps, schema_editor):
         Site,
         schema_editor.connection,
         # BEGIN_REPLACE
-        # {{ cookiecutter.domain_name }} => {{ {{ cookiecutter.domain_name }} }}
-        # {{ cookiecutter.project_name }} => {{ {{ cookiecutter.project_name }} }}
+        # {{ cookiecutter.domain_name }} => {{ '{{ cookiecutter.domain_name }}' }}
+        # {{ cookiecutter.project_name }} => {{ '{{ cookiecutter.project_name }}' }}
         # REPLACE_START
         "{{ cookiecutter.domain_name }}",
         "{{ cookiecutter.project_name }}",

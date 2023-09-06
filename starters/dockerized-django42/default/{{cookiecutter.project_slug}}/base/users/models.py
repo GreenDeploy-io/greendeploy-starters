@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 class User(AbstractUser):
     """
     # BEGIN_REPLACE
-    # {{ cookiecutter.project_name }} => {{ {{ cookiecutter.project_name }} }}
+    # {{ cookiecutter.project_name }} => {{ '{{ cookiecutter.project_name }}' }}
     # REPLACE_START
     Default custom user model for {{ cookiecutter.project_name }}.
     # REPLACE_END

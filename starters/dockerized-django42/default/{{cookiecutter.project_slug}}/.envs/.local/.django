@@ -4,7 +4,7 @@ DEBUG=True
 DJANGO_SECRET_KEY=!!SECRETKEYHERE!!
 
 # BEGIN_REPLACE
-# {{ cookiecutter.project_noslug }} => {{ {{ cookiecutter.project_noslug }} }}
+# {{ cookiecutter.project_noslug }} => {{ '{{ cookiecutter.project_noslug }}' }}
 # REPLACE_START
 # .domain.com allows all the subdomains such as s1.domain.com
 DJANGO_ALLOWED_HOSTS=127.0.0.1,localhost,{{ cookiecutter.project_noslug }}.localhost

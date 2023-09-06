@@ -7,7 +7,7 @@ import sys
 def main():
     """Run administrative tasks."""
     # BEGIN_REPLACE
-    # {{ cookiecutter.project_slug }} => {{ {{ cookiecutter.project_slug }} }}
+    # {{ cookiecutter.project_slug }} => {{ '{{ cookiecutter.project_slug }}' }}
     # REPLACE_START
     # regular django would use {{ cookiecutter.project_slug }}.settings
     # REPLACE_END

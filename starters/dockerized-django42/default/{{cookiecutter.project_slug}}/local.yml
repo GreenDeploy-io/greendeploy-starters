@@ -1,7 +1,7 @@
 # BEGIN_REPLACE
-# {{ cookiecutter.project_slug }} => {{ {{ cookiecutter.project_slug }} }}
-# {{ cookiecutter.domain_name }} => {{ {{ cookiecutter.domain_name }} }}
-# {{ cookiecutter.docker_service_web }} => {{ {{ cookiecutter.docker_service_web }} }}
+# {{ cookiecutter.project_slug }} => {{ '{{ cookiecutter.project_slug }}' }}
+# {{ cookiecutter.domain_name }} => {{ '{{ cookiecutter.domain_name }}' }}
+# {{ cookiecutter.docker_service_web }} => {{ '{{ cookiecutter.docker_service_web }}' }}
 # REPLACE_START
 
 version: "3.9"

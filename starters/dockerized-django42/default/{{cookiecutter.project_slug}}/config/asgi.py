@@ -1,6 +1,6 @@
 """
 # BEGIN_REPLACE
-# {{ cookiecutter.project_slug }} => {{ {{ cookiecutter.project_slug }} }}
+# {{ cookiecutter.project_slug }} => {{ '{{ cookiecutter.project_slug }}' }}
 # REPLACE_START
 ASGI config for {{ cookiecutter.project_slug }} project.
 # REPLACE_END
