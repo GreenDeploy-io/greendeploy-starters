@@ -26,20 +26,20 @@ defusedxml==0.7.1
     # via python3-openid
 dj-database-url==2.1.0
     # via -r base-base.in
-django==4.2.3
+django==4.2.5
     # via
     #   -r base-base.in
     #   dj-database-url
     #   django-allauth
-django-allauth @ git+https://github.com/simkimsia/django-allauth@v0.55.0-django42
+django-allauth==0.55.2
     # via -r base-base.in
-django-environ @ git+https://github.com/simkimsia/django-environ@v0.11.1-django42
+django-environ==0.11.2
     # via -r base-base.in
 idna==3.4
     # via requests
 oauthlib==3.2.2
     # via requests-oauthlib
-psycopg==3.1.9
+psycopg==3.1.10
     # via -r base-base.in
 pycparser==2.21
     # via cffi
@@ -51,7 +51,7 @@ python3-openid==3.2.0
     # via django-allauth
 pytz==2023.3
     # via -r base-base.in
-redis==4.6.0
+redis==5.0.0
     # via -r base-base.in
 requests==2.31.0
     # via

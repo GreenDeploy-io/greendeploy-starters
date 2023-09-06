@@ -1,5 +1,9 @@
 """
-URL configuration for {{cookiecutter.project_slug}} project.
+# BEGIN_REPLACE
+# {{ cookiecutter.project_slug }} => {{ {{ cookiecutter.project_slug }} }}
+# REPLACE_START
+URL configuration for {{ cookiecutter.project_slug }} project.
+# REPLACE_END
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/dev/topics/http/urls/

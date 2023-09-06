@@ -1,5 +1,6 @@
 from .base import *  # noqa
 from .base import env
+from .domains import *  # noqa
 
 # BEGIN_REPLACE
 # {{ cookiecutter.domain_name }} => {{ {{ cookiecutter.domain_name }} }}

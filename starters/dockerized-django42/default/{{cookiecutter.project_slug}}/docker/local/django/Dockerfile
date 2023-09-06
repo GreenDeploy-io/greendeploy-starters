@@ -1,10 +1,13 @@
 # because ubuntu-jammy uses python3 for latest python3.10 and pip3
-FROM ubuntu:jammy-20230624
+FROM ubuntu:jammy-20230816
 
-# Create it as a "system" user without a home directory (-r)
+# https://stackoverflow.com/a/76850816/80353 recommends to create
+# "system" user without a home directory (-r)
 # Do not force a specific numeric uid
-# see https://stackoverflow.com/a/76850816/80353 for details
-RUN useradd -r app_user
+# we also need the app_user to have its own home directory for ipdb to run
+# hence we drop it for local host
+# also need to use adduser instead of useradd else no home directory
+RUN adduser app_user
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -35,10 +38,20 @@ RUN apt-get install vim -y
 # To ensure pip3 works
 RUN apt-get install python3-pip -y
 
+# To ensure pip3 works
+RUN apt-get install python3-pip -y
+
 # April 2023 pip==23.1.2
 RUN pip3 install --upgrade pip==23.1.2
 
 RUN apt-get update
+
+#########################################
+#
+# Postgres
+#   needs psycopg2-binary
+#     which needs libpq-dev gcc python3-dev
+#########################################
 
 #########################################
 #

@@ -1,5 +1,9 @@
 """
-ASGI config for {{cookiecutter.project_slug}} project.
+# BEGIN_REPLACE
+# {{ cookiecutter.project_slug }} => {{ {{ cookiecutter.project_slug }} }}
+# REPLACE_START
+ASGI config for {{ cookiecutter.project_slug }} project.
+# REPLACE_END
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

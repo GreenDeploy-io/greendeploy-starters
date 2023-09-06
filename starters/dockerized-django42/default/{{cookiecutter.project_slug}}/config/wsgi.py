@@ -1,5 +1,9 @@
 """
-WSGI config for {{cookiecutter.project_slug}} project.
+# BEGIN_REPLACE
+# {{ cookiecutter.project_slug }} => {{ {{ cookiecutter.project_slug }} }}
+# REPLACE_START
+WSGI config for {{ cookiecutter.project_slug }} project.
+# REPLACE_END
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

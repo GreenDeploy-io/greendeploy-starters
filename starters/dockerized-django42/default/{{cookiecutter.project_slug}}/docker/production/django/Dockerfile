@@ -1,5 +1,5 @@
 # because ubuntu-jammy uses python3 for latest python3.10 and pip3
-FROM ubuntu:jammy-20230624
+FROM ubuntu:jammy-20230816
 
 # Create it as a "system" user without a home directory (-r)
 # Do not force a specific numeric uid

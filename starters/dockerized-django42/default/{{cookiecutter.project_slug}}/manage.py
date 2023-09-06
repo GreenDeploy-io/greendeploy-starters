@@ -6,8 +6,12 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    # regular django would use {{cookiecutter.project_slug}}.settings
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.base')
+    # BEGIN_REPLACE
+    # {{ cookiecutter.project_slug }} => {{ {{ cookiecutter.project_slug }} }}
+    # REPLACE_START
+    # regular django would use {{ cookiecutter.project_slug }}.settings
+    # REPLACE_END
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.domains.base')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

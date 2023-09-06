@@ -39,8 +39,13 @@ def update_site_forward(apps, schema_editor):
     _update_or_create_site_with_sequence(
         Site,
         schema_editor.connection,
-        "{{cookiecutter.domain_name}}",
-        "{{cookiecutter.project_name}}",
+        # BEGIN_REPLACE
+        # {{ cookiecutter.domain_name }} => {{ {{ cookiecutter.domain_name }} }}
+        # {{ cookiecutter.project_name }} => {{ {{ cookiecutter.project_name }} }}
+        # REPLACE_START
+        "{{ cookiecutter.domain_name }}",
+        "{{ cookiecutter.project_name }}",
+        # REPLACE_END
     )
 
 

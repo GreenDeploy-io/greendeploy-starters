@@ -3,8 +3,16 @@
 DJANGO_SETTINGS_MODULE=config.settings.production
 DJANGO_SECRET_KEY=!!SECRETKEYHERE!!
 DJANGO_ADMIN_URL=!!!SET DJANGO_ADMIN_URL!!!
+# BEGIN_REPLACE
+# {{ cookiecutter.domain_name }} => {{ {{ cookiecutter.domain_name }} }}
+# REPLACE_START
 # .domain.com allows all the subdomains such as s1.domain.com
 DJANGO_ALLOWED_HOSTS={{ cookiecutter.domain_name }},
+# REPLACE_END
+
+# Password
+# ------------------------------------------------------------------------------
+SECRET_TEST_USER_PASSWORD=!!321FAKE_PASSWORD123!!
 
 # Security
 # ------------------------------------------------------------------------------

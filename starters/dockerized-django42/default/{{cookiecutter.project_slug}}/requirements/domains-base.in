@@ -1,4 +1,4 @@
-# To update domains-base.txt, run:
+# To update base.txt, run:
 #
 #    use the alias `ubuntu-default-pip-compile-venv` instead
 #    source ~/.venv/to-pip-compile-py3xxyy/bin/activate
@@ -15,3 +15,4 @@
 # ----------------------------------------------------------------
 # Domains
 # ----------------------------------------------------------------
+
