@@ -1,4 +1,6 @@
-FROM postgres:15.2
+# https://endoflife.date/postgresql
+# 2023 Aug https://www.postgresql.org/docs/release/15.4/
+FROM postgres:15.4
 
 COPY ./maintenance /usr/local/bin/maintenance
 RUN chmod +x /usr/local/bin/maintenance/*
