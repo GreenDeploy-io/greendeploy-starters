@@ -1,0 +1,6 @@
+project:
+  project_slug: django_project
+  django: 3.2.5
+  settings_dir: config
+  ssl: cloudflare
+

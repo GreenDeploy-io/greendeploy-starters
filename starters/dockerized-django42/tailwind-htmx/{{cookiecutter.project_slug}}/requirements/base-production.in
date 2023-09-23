@@ -1,0 +1,12 @@
+# To update base-production.txt, run:
+#
+#    pip-compile base-production.in
+#
+# To install in prod, run:
+#
+#    pip-sync base-base.txt base-production.txt
+#
+
+-c base-base.txt
+
+gunicorn==20.1.*  # 2021 Mar https://pypi.org/project/gunicorn/20.1.0/

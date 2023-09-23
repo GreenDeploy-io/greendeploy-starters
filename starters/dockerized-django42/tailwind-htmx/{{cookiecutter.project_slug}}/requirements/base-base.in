@@ -1,0 +1,50 @@
+# To update base.txt, run:
+#
+#    use the alias `ubuntu-default-pip-compile-venv` instead
+#    source ~/.venv/to-pip-compile-py3xxyy/bin/activate
+#    cd /path/to/\{\{cookiecutter.project_slug\}\}/requirements
+#    pip-compile base-base.in
+#
+# To install in localhost, run:
+#
+#    pip-sync base-base.txt
+#
+
+# ----------------------------------------------------------------
+# Base
+# ----------------------------------------------------------------
+
+# Django
+# ----------------------------------------------------------------
+django==4.2.5  # 2023 Sept https://pypi.org/project/Django/4.2.5/
+
+# Database
+# ----------------------------------------------------------------
+psycopg==3.1.10 # 2023 Aug https://pypi.org/project/psycopg/3.1.10/
+dj-database-url==2.1.0 # 2023 Aug https://pypi.org/project/dj-database-url/2.1.0/
+
+# Settings
+# ----------------------------------------------------------------
+# see https://github.com/simkimsia/django-environ/releases/tag/v0.11.1-django42 for details
+# git+https://github.com/simkimsia/django-environ@v0.11.1-django42#egg=django-environ
+django-environ==0.11.2 # 2023 Sept https://pypi.org/project/django-environ/0.11.2/
+pytz==2023.3  # 2023 Mar https://pypi.org/project/pytz/2023.3/
+python-slugify==8.0.1  # 2023 Feb https://pypi.org/project/python-slugify/8.0.1/
+
+# Image
+# ----------------------------------------------------------------
+# Pillow==9.0.0  # https://github.com/python-pillow/Pillow
+
+# Authentication
+# ----------------------------------------------------------------
+# not yet 4.2 django-allauth==0.54.0  # 2023 Apr https://pypi.org/project/django-allauth/0.54.0/
+# see https://github.com/simkimsia/django-allauth/releases/tag/v0.55.0-django42 for details
+# git+https://github.com/simkimsia/django-allauth@v0.55.0-django42#egg=django-allauth
+django-allauth==0.56.1 # 2023 Sept https://pypi.org/project/django-allauth/0.56.1/
+# we use argon2 because https://docs.djangoproject.com/en/dev/topics/auth/passwords/#using-argon2-with-django
+# better than Django's default and better than bcrypt
+argon2-cffi==23.1.0  # 2021 Aug https://pypi.org/project/argon2-cffi/23.1.0/
+
+# Redis
+# ----------------------------------------------------------------
+redis==5.0.0  # 2023 Aug https://pypi.org/project/redis/5.0.0/

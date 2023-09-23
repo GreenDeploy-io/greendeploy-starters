@@ -1,0 +1,12 @@
+# To update domains-production.txt, run:
+#
+#    pip-compile domains-production.in
+#
+# To install in production, run:
+#
+#    pip-sync domains-base.txt domains-production.txt
+#
+
+-c base-base.txt base-production.txt domains-base.txt
+
+# Add your production requirements here for domains

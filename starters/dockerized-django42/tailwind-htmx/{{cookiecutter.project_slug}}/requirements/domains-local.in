@@ -1,0 +1,12 @@
+# To update domains-local.txt, run:
+#
+#    pip-compile domains-local.in
+#
+# To install in local, run:
+#
+#    pip-sync domains-base.txt domains-local.txt
+#
+
+-c base-base.txt base-local.txt domains-base.txt
+
+# Add your local requirements here for domains
