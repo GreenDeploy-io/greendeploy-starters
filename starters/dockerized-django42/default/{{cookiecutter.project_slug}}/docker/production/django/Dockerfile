@@ -35,23 +35,22 @@ RUN apt-get install vim -y
 # To ensure pip3 works
 RUN apt-get install python3-pip -y
 
-# April 2023 pip==23.1.2
-RUN pip3 install --upgrade pip==23.1.2
+# 2023 Jul pip==23.2.1
+RUN pip3 install --upgrade pip==23.2.1
 
 RUN apt-get update
 
 #########################################
 #
 # Postgres
-#   needs psycopg2-binary
-#     which needs libpq-dev gcc python3-dev
+#   needs psycopg
+#     which needs libpq-dev gcc python3.10-dev
 #########################################
-
 
 # for other standard libraries
 RUN apt-get install -y --no-install-recommends \
-    # psycopg2 dependencies
-    libpq-dev gcc python3-dev
+    # psycopg dependencies
+    libpq-dev gcc python3.10-dev
 
 # End of Postgres requirement
 
@@ -64,8 +63,8 @@ WORKDIR /code
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements /requirements
 
-# July 2023 pip-tools==6.14.0
-RUN pip3 install pip-tools==6.14.0
+# 2023 August pip-tools==7.3.0
+RUN pip3 install pip-tools==7.3.0
 RUN pip-sync /requirements/base-base.txt /requirements/base-production.txt /requirements/domains-base.txt /requirements/domains-production.txt
 
 COPY . /code/
