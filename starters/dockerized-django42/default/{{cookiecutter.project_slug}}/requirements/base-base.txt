@@ -4,7 +4,7 @@
 #
 #    pip-compile base-base.in
 #
-argon2-cffi==21.3.0
+argon2-cffi==23.1.0
     # via -r base-base.in
 argon2-cffi-bindings==21.2.0
     # via argon2-cffi
@@ -31,7 +31,7 @@ django==4.2.5
     #   -r base-base.in
     #   dj-database-url
     #   django-allauth
-django-allauth==0.55.2
+django-allauth==0.56.1
     # via -r base-base.in
 django-environ==0.11.2
     # via -r base-base.in
