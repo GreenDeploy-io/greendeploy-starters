@@ -31,9 +31,18 @@ django==4.2.5
     #   -r base-base.in
     #   dj-database-url
     #   django-allauth
+    #   django-htmx
+    #   django-tailwind
+    #   heroicons
 django-allauth==0.56.1
     # via -r base-base.in
 django-environ==0.11.2
+    # via -r base-base.in
+django-htmx==1.16.0
+    # via -r base-base.in
+django-tailwind==3.6.0
+    # via -r base-base.in
+heroicons[django]==2.4.0
     # via -r base-base.in
 idna==3.4
     # via requests
