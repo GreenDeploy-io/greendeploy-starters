@@ -13,3 +13,14 @@ The following needs to be updated regularly in the starter template.
     1. all the packages
     2. remember to run `pip-compile`
 
+
+Changelog
+---------
+
+0.0.1 (2023-09-24 Sunday)
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Update argon2-cffi, django-allauth in the base-base.in
+- Update pip, pip-tools in the Django dockerfiles
+- Update all the dockerfiles to the latest versions
+- Initial release

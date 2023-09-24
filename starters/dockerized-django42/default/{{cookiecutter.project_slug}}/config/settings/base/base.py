@@ -19,6 +19,7 @@ from pathlib import Path
 
 import dj_database_url
 import environ
+
 # inspired by https://github.com/cookiecutter/cookiecutter-django/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/config/settings/base.py
 from django.core.management.utils import get_random_secret_key
 
@@ -151,6 +152,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     # "reversion.middleware.RevisionMiddleware",
+    # Add the account middleware:
+    "allauth.account.middleware.AccountMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     # "core.middleware.RequestDomainMiddleware",
     # "last_active.middleware.LastActiveMiddleware",
