@@ -22,6 +22,8 @@ charset-normalizer==3.2.0
     # via requests
 cryptography==41.0.2
     # via pyjwt
+decli==0.6.1
+    # via -r base-base.in
 defusedxml==0.7.1
     # via python3-openid
 dj-database-url==2.1.0

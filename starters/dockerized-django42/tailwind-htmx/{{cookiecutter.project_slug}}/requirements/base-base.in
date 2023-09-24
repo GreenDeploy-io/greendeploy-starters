@@ -51,10 +51,16 @@ redis==5.0.0  # 2023 Aug https://pypi.org/project/redis/5.0.0/
 
 ## Frontend ##
 django-htmx==1.16.0 # 2023 Jul https://pypi.org/project/django-htmx/1.16.0/
+heroicons[django]==2.4.0 # 2023 Jul https://pypi.org/project/heroicons/2.4.0/
 
 # Tailwind
 # ------------------------------------------------------------------------------
 django-tailwind==3.6.0 # 2023 Jul https://pypi.org/project/django-tailwind/3.6.0/
-heroicons[django]==2.4.0 # 2023 Jul https://pypi.org/project/heroicons/2.4.0/
 
 ## End of Frontend ##
+
+## CLI ##
+
+# decli
+# ----------------------------------------------------------------
+decli==0.6.1  # 2023 Jun https://pypi.org/project/decli/0.6.1/

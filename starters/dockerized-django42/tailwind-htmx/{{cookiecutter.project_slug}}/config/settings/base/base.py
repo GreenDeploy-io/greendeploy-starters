@@ -91,8 +91,12 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     "allauth",
-    # "allauth.account",
-    # "allauth.socialaccount",
+    "allauth.account",
+    "allauth.socialaccount",
+    "tailwind",
+    "heroicons",
+    "themes.theme",
+    "themes.base_theme",
 ]
 
 LOCAL_APPS = [
@@ -151,6 +155,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     # "reversion.middleware.RevisionMiddleware",
+    # Add the account middleware:
+    "allauth.account.middleware.AccountMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     # "core.middleware.RequestDomainMiddleware",
     # "last_active.middleware.LastActiveMiddleware",
@@ -277,4 +283,21 @@ STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-# REPLACE_END
+
+# TAILWIND
+# ------------------------------------------------------------------------------
+TAILWIND_APP_NAME = "domains.theme"
+# Split the string by '.'
+tailwind_tokens = TAILWIND_APP_NAME.split(".")
+
+# Get the last token
+TAILWIND_APP_FOLDER_NAME = tailwind_tokens[-1] if tailwind_tokens else None
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+TAILWIND_APP_DIR = BASE_DIR / "themes" / TAILWIND_APP_FOLDER_NAME
+TEMPLATES[0]["DIRS"] = [str(TAILWIND_APP_DIR / "templates")] + TEMPLATES[0]["DIRS"]
+
+# END TAILWIND

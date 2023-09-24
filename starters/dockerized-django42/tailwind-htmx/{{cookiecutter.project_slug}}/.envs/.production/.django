@@ -1,6 +1,6 @@
 # General
 # ------------------------------------------------------------------------------
-DJANGO_SETTINGS_MODULE=config.settings.production
+DJANGO_SETTINGS_MODULE=config.settings.domains.production
 DJANGO_SECRET_KEY=!!SECRETKEYHERE!!
 DJANGO_ADMIN_URL=!!!SET DJANGO_ADMIN_URL!!!
 # BEGIN_REPLACE

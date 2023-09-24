@@ -6,18 +6,55 @@
 #
 appnope==0.1.3
     # via ipython
+arrow==1.2.3
+    # via cookiecutter
+asgiref==3.7.2
+    # via
+    #   -c base-base.txt
+    #   django
 asttokens==2.2.1
     # via stack-data
 backcall==0.2.0
     # via ipython
+binaryornot==0.4.4
+    # via cookiecutter
+certifi==2023.5.7
+    # via
+    #   -c base-base.txt
+    #   requests
+chardet==5.2.0
+    # via binaryornot
+charset-normalizer==3.2.0
+    # via
+    #   -c base-base.txt
+    #   requests
+click==8.1.7
+    # via cookiecutter
+cookiecutter==2.3.1
+    # via -r base-local.in
 decorator==5.1.1
     # via
     #   ipdb
     #   ipython
+django==4.2.5
+    # via
+    #   -c base-base.txt
+    #   django-browser-reload
+    #   django-tailwind
+django-browser-reload==1.11.0
+    # via django-tailwind
+django-tailwind[reload]==3.6.0
+    # via
+    #   -c base-base.txt
+    #   -r base-local.in
 exceptiongroup==1.1.2
     # via pytest
 executing==1.2.0
     # via stack-data
+idna==3.4
+    # via
+    #   -c base-base.txt
+    #   requests
 iniconfig==2.0.0
     # via pytest
 ipdb==0.13.13
@@ -26,8 +63,16 @@ ipython==8.14.0
     # via ipdb
 jedi==0.18.2
     # via ipython
+jinja2==3.1.2
+    # via cookiecutter
+markdown-it-py==3.0.0
+    # via rich
+markupsafe==2.1.3
+    # via jinja2
 matplotlib-inline==0.1.6
     # via ipython
+mdurl==0.1.2
+    # via markdown-it-py
 packaging==23.1
     # via pytest
 parso==0.8.3
@@ -47,8 +92,10 @@ ptyprocess==0.7.0
 pure-eval==0.2.2
     # via stack-data
 pygments==2.15.1
-    # via ipython
-pytest==7.4.0
+    # via
+    #   ipython
+    #   rich
+pytest==7.4.2
     # via
     #   -r base-local.in
     #   pytest-django
@@ -57,10 +104,34 @@ pytest-django==4.5.2
     # via -r base-local.in
 pytest-restrict==4.6.0
     # via -r base-local.in
+python-dateutil==2.8.2
+    # via arrow
+python-slugify==8.0.1
+    # via
+    #   -c base-base.txt
+    #   cookiecutter
+pyyaml==6.0.1
+    # via cookiecutter
+requests==2.31.0
+    # via
+    #   -c base-base.txt
+    #   cookiecutter
+rich==13.5.3
+    # via cookiecutter
 six==1.16.0
-    # via asttokens
+    # via
+    #   asttokens
+    #   python-dateutil
+sqlparse==0.4.4
+    # via
+    #   -c base-base.txt
+    #   django
 stack-data==0.6.2
     # via ipython
+text-unidecode==1.3
+    # via
+    #   -c base-base.txt
+    #   python-slugify
 tomli==2.0.1
     # via
     #   ipdb
@@ -69,5 +140,13 @@ traitlets==5.9.0
     # via
     #   ipython
     #   matplotlib-inline
+typing-extensions==4.7.1
+    # via
+    #   -c base-base.txt
+    #   asgiref
+urllib3==2.0.3
+    # via
+    #   -c base-base.txt
+    #   requests
 wcwidth==0.2.6
     # via prompt-toolkit
