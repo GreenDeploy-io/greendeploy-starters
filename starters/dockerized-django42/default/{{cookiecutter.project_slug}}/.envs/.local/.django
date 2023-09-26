@@ -1,5 +1,6 @@
 # General
 # ------------------------------------------------------------------------------
+DJANGO_SETTINGS_MODULE=config.settings.domains.local
 DEBUG=True
 DJANGO_SECRET_KEY=!!SECRETKEYHERE!!
 
