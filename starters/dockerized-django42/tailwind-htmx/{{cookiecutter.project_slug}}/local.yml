@@ -19,8 +19,8 @@ services:
       - pg14_postgres_data_local:/var/lib/postgresql/data
       - pg14_postgres_backup_local:/backups
     env_file:
-      - ./.envs/.base/.postgres
       - ./.envs/.local/.postgres
+      - ./.envs/.personal/.postgres
     ports:
       - "5432:5432"
   {{ cookiecutter.docker_service_web }}:
@@ -38,8 +38,8 @@ services:
       - "8000:8000"
     env_file:
       - ./.envs/.local/.django
-      - ./.envs/.base/.postgres
       - ./.envs/.local/.postgres
+      - ./.envs/.personal/.postgres
     # replaced by env_file
     # environment:
     #   - POSTGRES_NAME=postgres
