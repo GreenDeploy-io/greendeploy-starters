@@ -1,23 +1,14 @@
 {% raw %}{% extends "base.html" %}{% endraw %}
 
 {% raw %}{% block container %}{% endraw %}
-Works!
+You're logged in.
 
 {% raw %}{% if user.is_authenticated %}{% endraw %}
 <p>Username: <strong>{% raw %}{{ user.username }}{% endraw %}</strong></p>
 
 <p><a href="/admin">Admin</a></p>
-<p><strong>Anonymous - Homepage</strong></p>
-<p><a href="/loggedin">Logged in - Homepage</strong></p>
+<p><a href="/">Anonymous - Homepage</a></p>
+<p><strong>Logged in - Homepage</strong></p>
 <p><a href="/accounts/logout">Logout at /accounts </strong></p>
-
-{% raw %}{% else %}{% endraw %}
-
-
-<p><a href="/admin">Admin</a></p>
-<p><strong>Anonymous - Homepage</strong></p>
-<p><a href="/accounts/login">Login at /accounts </strong></p>
-
 {% raw %}{% endif %}{% endraw %}
 {% raw %}{% endblock %}{% endraw %}
-

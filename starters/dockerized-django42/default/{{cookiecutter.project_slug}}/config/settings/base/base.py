@@ -23,25 +23,28 @@ import environ
 # inspired by https://github.com/cookiecutter/cookiecutter-django/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/config/settings/base.py
 from django.core.management.utils import get_random_secret_key
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent.parent
-# {{ cookiecutter.project_slug }}/ might want to change this to "domains"
-APPS_DIR = BASE_DIR / "domains"
+# Build paths inside the project like this: ROOT_DIR / 'subdir'.
+ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent.parent
+
+BASE_DIR = ROOT_DIR / "base"
+COMPLEMENTS_DIR = ROOT_DIR / "complements"
+DOMAINS_DIR = ROOT_DIR / "domains"
+
 env = environ.Env()
 
 if READ_DOT_ENV_FILE := env.bool("DJANGO_READ_DOT_ENV_FILE", default=False):
     # OS environment variables take precedence over variables from .env
-    env.read_env(str(BASE_DIR / ".envs"))
+    env.read_env(str(ROOT_DIR / ".envs"))
 
 
-# READ_DOT_ENV_DIR = bool(BASE_DIR / ".envs")
+# READ_DOT_ENV_DIR = bool(ROOT_DIR / ".envs")
 
 # if READ_DOT_ENV_DIR:
 #     # Read all configuration files of the .envs directory.
-#     env.read_env(str(BASE_DIR / ".envs/.local/.django"))
-#     env.read_env(str(BASE_DIR / ".envs/.local/.postgres"))
-#     env.read_env(str(BASE_DIR / ".envs/.production/.django"))
-#     env.read_env(str(BASE_DIR / ".envs/.production/.postgres"))
+#     env.read_env(str(ROOT_DIR / ".envs/.local/.django"))
+#     env.read_env(str(ROOT_DIR / ".envs/.local/.postgres"))
+#     env.read_env(str(ROOT_DIR / ".envs/.production/.django"))
+#     env.read_env(str(ROOT_DIR / ".envs/.production/.postgres"))
 
 
 # GENERAL
@@ -62,7 +65,7 @@ USE_I18N = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#use-tz
 USE_TZ = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#locale-paths
-LOCALE_PATHS = [str(BASE_DIR / "locale")]
+LOCALE_PATHS = [str(ROOT_DIR / "locale")]
 
 # Raises Django's ImproperlyConfigured
 # exception if SECRET_KEY not in os.environ
@@ -92,11 +95,12 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     "allauth",
-    # "allauth.account",
-    # "allauth.socialaccount",
+    "allauth.account",
+    "allauth.socialaccount",
 ]
 
 LOCAL_APPS = [
+    "base",  # this is needed for `templatetags/template_filters.py`
     "base.users",
 ]
 
@@ -162,11 +166,11 @@ MIDDLEWARE = [
 # STATIC
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-root
-STATIC_ROOT = str(BASE_DIR / "staticfiles")
+STATIC_ROOT = str(ROOT_DIR / "staticfiles")
 # https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#std:setting-STATICFILES_DIRS
-STATICFILES_DIRS = [str(APPS_DIR / "static")]
+STATICFILES_DIRS = [str(DOMAINS_DIR / "static")]
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -176,14 +180,22 @@ STATICFILES_FINDERS = [
 # MEDIA
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = str(APPS_DIR / "media")
+MEDIA_ROOT = str(DOMAINS_DIR / "media")
 # https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = "/media/"
+
+# TEMPLATES
+
+DEFAULT_TEMPLATES_DIRS = [
+    str(DOMAINS_DIR / "templates"),
+    str(COMPLEMENTS_DIR / "templates"),
+    str(BASE_DIR / "templates"),
+]
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [str(APPS_DIR / "templates"), str(BASE_DIR / "base" / "templates")],
+        "DIRS": DEFAULT_TEMPLATES_DIRS,
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

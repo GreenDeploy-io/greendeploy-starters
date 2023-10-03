@@ -1,2 +1,2 @@
-from config.settings.base.base import *  # noqa
+from config.settings.complements import *  # noqa
 

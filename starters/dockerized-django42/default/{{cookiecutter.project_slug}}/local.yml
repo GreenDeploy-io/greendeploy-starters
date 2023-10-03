@@ -9,6 +9,7 @@ version: "3.9"
 volumes:
   pg14_postgres_data_local: {}
   pg14_postgres_backup_local: {}
+  # v14_meilisearch_data_local: {}
 
 services:
   db_postgres:
@@ -40,12 +41,23 @@ services:
       - ./.envs/.local/.django
       - ./.envs/.local/.postgres
       - ./.envs/.personal/.postgres
-    # replaced by env_file
-    # environment:
-    #   - POSTGRES_NAME=postgres
-    #   - POSTGRES_USER=postgres
-    #   - POSTGRES_PASSWORD=postgres
     depends_on:
       - db_postgres
+  # meilisearch:
+  #   platform: linux/amd64
+  #   build: ./docker/production/meilisearch/
+  #   restart: unless-stopped
+  #   ports:
+  #     - "7700:7700"
+  #   volumes:
+  #     - v14_meilisearch_data_local:/data.ms
+  #   env_file:
+  #     - ./.envs/.local/.meilisearch
+  #     - ./.envs/.personal/.meilisearch
+  # meilisync:
+  #   platform: linux/amd64
+  #   image: long2ice/meilisync
+  #   volumes:
+  #     - ./config.yml:/meilisync/config.yml
 
 # REPLACE_END

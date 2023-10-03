@@ -17,6 +17,12 @@ The following needs to be updated regularly in the starter template.
 Changelog
 ---------
 
+0.0.2 (2023-10-03 Tuesday)
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Add complements as a way to extend base
+
+
 0.0.1 (2023-09-24 Sunday)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 

@@ -7,6 +7,10 @@ URL configuration for {{ cookiecutter.project_slug }} project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/dev/topics/http/urls/
+
+Useful imports:
+from django.urls import include, path
+
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -43,10 +47,6 @@ if "allauth" in settings.INSTALLED_APPS:
         path("accounts/", include("allauth.urls")),
     ]
 
-urlpatterns += [
-    # Your stuff: custom urls includes go here
-]
-
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
@@ -74,4 +74,3 @@ if settings.DEBUG:
         import debug_toolbar
 
         urlpatterns = [path("__debug__/", include(debug_toolbar.urls))] + urlpatterns
-
