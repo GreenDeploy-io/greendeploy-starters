@@ -1,5 +1,5 @@
 # because ubuntu-jammy uses python3 for latest python3.10 and pip3
-FROM ubuntu:jammy-20230816
+FROM ubuntu:jammy-20231004
 
 # Create it as a "system" user without a home directory (-r)
 # Do not force a specific numeric uid
@@ -35,7 +35,7 @@ RUN apt-get install vim -y
 # To ensure pip3 works
 RUN apt-get install python3-pip -y
 
-# 2023 Jul pip==23.2.1
+# 2023 Jul https://pypi.org/project/pip/23.2.1/
 RUN pip3 install --upgrade pip==23.2.1
 
 RUN apt-get update
@@ -63,7 +63,7 @@ WORKDIR /code
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements /requirements
 
-# 2023 August pip-tools==7.3.0
+# 2023 Aug https://pypi.org/project/pip-tools/7.3.0/
 RUN pip3 install pip-tools==7.3.0
 RUN pip-sync /requirements/base-base.txt /requirements/base-production.txt /requirements/domains-base.txt /requirements/domains-production.txt
 
