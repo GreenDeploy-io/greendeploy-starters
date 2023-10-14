@@ -13,4 +13,5 @@ POSTGRES_PASSWORD=debug
 
 # Define DATABASE_URL using Postgres configuration
 DATABASE_URL=postgres://debug:debug@localhost:5432/{{ cookiecutter.project_slug }}
+
 # REPLACE_END
