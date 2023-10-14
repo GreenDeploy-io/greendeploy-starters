@@ -13,9 +13,15 @@ The following needs to be updated regularly in the starter template.
     1. all the packages
     2. remember to run `pip-compile`
 
-
 Changelog
 ---------
+
+0.0.3 (2023-10-14 Saturday)
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Update django, psycopg, pytz, django-allauth, and redis in the base-base.in
+- Update ubuntu-jammy version in Dockerfiles
+
 
 0.0.2 (2023-10-03 Tuesday)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -30,3 +36,5 @@ Changelog
 - Update pip, pip-tools in the Django dockerfiles
 - Update all the dockerfiles to the latest versions
 - Initial release
+
+
