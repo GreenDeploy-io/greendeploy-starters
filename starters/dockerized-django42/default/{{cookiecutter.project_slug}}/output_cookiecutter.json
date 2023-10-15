@@ -1,0 +1,22 @@
+// BEGIN_REPLACE
+// {{ cookiecutter.project_name }} => {{ '{{ cookiecutter.project_name }}' }}
+// {{ cookiecutter.domain_name }} => {{ '{{ cookiecutter.domain_name }}' }}
+// {{ cookiecutter.docker_service_web }} => {{ '{{ cookiecutter.docker_service_web }}' }}
+// {{ cookiecutter.debug }} => {{ '{{ cookiecutter.debug }}' }}
+// {{ cookiecutter.timezone }} => {{ '{{ cookiecutter.timezone }}' }}
+// {{ cookiecutter.owner_login }} => {{ '{{ cookiecutter.owner_login }}' }}
+// REPLACE_START
+{
+  "project_name": "{{ cookiecutter.project_name }}",
+  "project_slug": "{{ '{{ cookiecutter.project_name.replace(' ', '_').replace('-', '_').lower().strip('-') }}' }}",
+  "project_noslug": "{{ '{{ cookiecutter.project_name.replace(' ', '').replace('-', '').lower().strip('') }}' }}",
+  "repo_private_or_public": "public",
+  "domain_name": "{{ cookiecutter.domain_name }}",
+  "docker_service_web": "{{ cookiecutter.docker_service_web }}",
+  "debug": "{{ cookiecutter.debug }}",
+  "timezone": "{{ cookiecutter.timezone }}",
+  "owner_login": "{{ cookiecutter.owner_login }}",
+  "some_other_variable": "some_other_value",
+  "_cop{{ cookiecutter.debug }}_without_render": ["*config.{{ cookiecutter.debug }}ml"]
+}
+// REPLACE_END
