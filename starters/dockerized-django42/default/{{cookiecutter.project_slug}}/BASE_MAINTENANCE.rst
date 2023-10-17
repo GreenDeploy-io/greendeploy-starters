@@ -1,3 +1,4 @@
+=================
 Base Maintenance
 =================
 
@@ -14,23 +15,32 @@ The following needs to be updated regularly in the starter template.
     2. remember to run `pip-compile`
 
 Changelog
----------
+=========
+
+0.0.4 (2023-10-21 Saturday)
+---------------------------
+
+- Add output_cookiecutter.json
+- Add python-benedict, webargs, marshmallow to base-base.in
+- Update .skip-reverse
+- Add .skip-overwrite
+
 
 0.0.3 (2023-10-14 Saturday)
-^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 
 - Update django, psycopg, pytz, django-allauth, and redis in the base-base.in
 - Update ubuntu-jammy version in Dockerfiles
 
 
 0.0.2 (2023-10-03 Tuesday)
-^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 
 - Add complements as a way to extend base
 
 
 0.0.1 (2023-09-24 Sunday)
-^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------
 
 - Update argon2-cffi, django-allauth in the base-base.in
 - Update pip, pip-tools in the Django dockerfiles
