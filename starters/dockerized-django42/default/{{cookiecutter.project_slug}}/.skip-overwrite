@@ -1,0 +1,12 @@
+# must use .envs* and not .envs/* else won't work
+.envs*
+.vscode*
+*.code-workspace
+domains/*
+!domains/templates/*
+# below needs special treatment in future
+config/urls/complements_urls/__init__.py
+config/settings/domains/base.py
+config/settings/complements/__init__.py
+base/utils/models.py
+config/urls/domains_urls.py
