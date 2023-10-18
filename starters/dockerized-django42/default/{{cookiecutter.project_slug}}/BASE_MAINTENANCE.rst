@@ -24,6 +24,8 @@ Changelog
 - Add python-benedict, webargs, marshmallow to base-base.in
 - Update .skip-reverse
 - Add .skip-overwrite
+- Update dependencies in the base-local.in
+- Improve `config/settings/complements` with new files: `.complements`, and `__init__.py`
 
 
 0.0.3 (2023-10-14 Saturday)
