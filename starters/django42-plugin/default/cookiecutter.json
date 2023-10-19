@@ -8,6 +8,6 @@
     "github_url": "GITHUB_URL",
     "some_other_variable": "some_other_value",
     "_copy_without_render": [
-        "*config.yml"
+        "*.yml"
     ]
 }
