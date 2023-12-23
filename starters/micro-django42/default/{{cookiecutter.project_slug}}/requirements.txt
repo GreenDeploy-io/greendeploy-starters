@@ -1,0 +1,10 @@
+# Django and typical dependencies
+django==4.2.7
+python-decouple==3.8
+gunicorn==21.2.0
+# psycopg==3.1.12 # 2023 Sep https://pypi.org/project/psycopg/3.1.12/
+
+# Validation
+# ------------------------------------------------------------------------------
+webargs==8.3.0 # 2023 Jul https://github.com/marshmallow-code/webargs
+marshmallow==3.20.1 # 2023 Jul https://github.com/marshmallow-code/marshmallow/3.20.1/

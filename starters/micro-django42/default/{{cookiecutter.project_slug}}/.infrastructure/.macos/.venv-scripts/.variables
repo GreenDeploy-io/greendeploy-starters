@@ -1,0 +1,5 @@
+venv_symlink=oauth-gpt-django-doap
+venv_actual=
+current_version=
+target_version_file=".infrastructure/.macos/.python-version"
+update_pyenv_command="brew upgrade pyenv"
