@@ -1,5 +1,7 @@
 # Dockerized Django Default Starter
 
+Canonical app: https://github.com/GreenDeploy-io/products-and-prices-django42
+
 All GreenDeploy Starters are basically Cookiecutter Templates.
 
 This specific Starter is the default for dockerized-django.
