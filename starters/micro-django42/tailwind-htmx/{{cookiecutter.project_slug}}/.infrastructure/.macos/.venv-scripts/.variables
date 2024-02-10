@@ -1,0 +1,5 @@
+venv_symlink=micro_django_tailwind_htmx_template_for_frontend_demo
+venv_actual=micro_django_tailwind_htmx_template_for_frontend_demo-31013
+current_version=3.10.13
+target_version_file=.infrastructure/.macos/.chosen-python-version
+update_pyenv_command="brew upgrade pyenv"

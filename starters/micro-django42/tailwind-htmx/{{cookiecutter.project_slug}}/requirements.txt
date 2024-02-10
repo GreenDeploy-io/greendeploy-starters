@@ -1,0 +1,19 @@
+# Django and typical dependencies
+django==4.2.10 # 2024 Feb https://pypi.org/project/Django/4.2.10/
+python-decouple==3.8 # 2023 Mar https://pypi.org/project/python-decouple/3.8.0/
+gunicorn==21.2.0 # 2023 Jul https://pypi.org/project/gunicorn/21.2.0/
+# psycopg==3.1.18 # 2024 Feb https://pypi.org/project/psycopg/3.1.18/
+
+# Validation
+# ------------------------------------------------------------------------------
+webargs==8.4.0 # 2024 Jan https://github.com/marshmallow-code/webargs/8.4.0/
+marshmallow==3.20.2 # 2024 Jan https://pypi.org/project/marshmallow/3.20.2/
+
+## Frontend ##
+django-htmx==1.17.2 # 2023 Nov https://pypi.org/project/django-htmx/1.17.2/
+
+# Tailwind
+# ------------------------------------------------------------------------------
+django-tailwind==3.8.0 # 2023 Dec https://pypi.org/project/django-tailwind/3.8.0/
+django-tailwind[reload]==3.8.0 # 2023 Dec https://pypi.org/project/django-tailwind/3.8.0/
+heroicons[django]==2.6.0 # 2023 Dec https://pypi.org/project/heroicons/2.6.0/

@@ -1,0 +1,32 @@
+// BEGIN_REPLACE
+// {{ cookiecutter.project_name }} => {{ '{{ cookiecutter.project_name }}' }}
+// {{ cookiecutter.project_slug }} => {{ '{{ cookiecutter.project_slug }}' }}
+// REPLACE_START
+alerts:
+- rule: DEPLOYMENT_FAILED
+- rule: DOMAIN_FAILED
+- rule: DEPLOYMENT_LIVE
+features:
+- buildpack-stack=ubuntu-22
+ingress:
+  rules:
+  - component:
+      name: {{ cookiecutter.project_slug }}
+    match:
+      path:
+        prefix: /
+name: {{ cookiecutter.project_slug }}
+region: nyc
+services:
+- environment_slug: python
+  github:
+    branch: chosen-branch
+    deploy_on_push: true
+    repo: your-github-owner-name/{{ cookiecutter.project_slug }}
+  http_port: 8000
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: {{ cookiecutter.project_slug }}
+  run_command: gunicorn manage:application --log-file -
+  source_dir: /
+// REPLACE_END

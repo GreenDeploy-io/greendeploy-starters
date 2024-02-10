@@ -1,0 +1,15 @@
+*.DS_Store
+
+!domains/__init__.py
+!domains/templates/__init__.py
+domains/*
+hooks/post_gen_project.py
+clean-replace-logic-1.py
+clean-replace-logic-2.py
+docker/production/meilisync/*
+docker/production/meilisearch/*
+.envs/.personal/.meilisearch
+.envs/.local/.meilisearch
+output_cookiecutter.json
+
+.venv

@@ -1,0 +1,10 @@
+ipdb
+twine
+wheel
+# setuptools
+build
+packaging
+rstcheck
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools
