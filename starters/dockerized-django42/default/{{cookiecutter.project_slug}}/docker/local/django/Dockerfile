@@ -52,7 +52,7 @@ RUN apt-get update
 
 # for other standard libraries
 RUN apt-get install -y --no-install-recommends \
-    # psycopg2 dependencies
+    # psycopg dependencies
     libpq-dev gcc python3.10-dev
 
 # End of Postgres requirement
@@ -62,6 +62,9 @@ RUN rm -rf /var/lib/apt/lists/* && \
 
 RUN mkdir /code
 WORKDIR /code
+
+# Change ownership of /code to app_user
+RUN chown -R app_user:app_user /code
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements /requirements

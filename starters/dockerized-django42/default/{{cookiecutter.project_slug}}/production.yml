@@ -52,7 +52,7 @@ services:
       context: .
       dockerfile: ./docker/production/django/Dockerfile
     image: {{ cookiecutter.project_slug }}_production_{{ cookiecutter.docker_service_web }}
-    container_name: django
+    container_name: {{ cookiecutter.docker_service_web }}
     volumes:
       - .:/code
       - ./staticfiles/:/code/staticfiles/

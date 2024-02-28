@@ -2,8 +2,8 @@
 #
 #    use the alias `ubuntu-default-pip-compile-venv` instead
 #    source ~/.venv/to-pip-compile-py3xxyy/bin/activate
-#    cd /path/to/\{\{cookiecutter.project_slug\}\}/requirements
-#    pip-compile domains-base.in
+#    pip-compile requirements/domains-base.in
+#    docker-compose -f local.yml build
 #
 # To install in localhost, run:
 #
@@ -11,8 +11,10 @@
 #
 
 -c base-base.txt
+-c base-local.txt
+-c base-production.txt
 
 # ----------------------------------------------------------------
-# Domains
+# Project-specific Dependencies
 # ----------------------------------------------------------------
 

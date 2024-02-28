@@ -2,6 +2,7 @@
 .envs*
 .vscode*
 *.code-workspace
+README.md
 domains/*
 !domains/templates/*
 # below needs special treatment in future

@@ -17,6 +17,6 @@
   "timezone": "{{ cookiecutter.timezone }}",
   "owner_login": "{{ cookiecutter.owner_login }}",
   "some_other_variable": "some_other_value",
-  "_cop{{ cookiecutter.debug }}_without_render": ["*config.{{ cookiecutter.debug }}ml"]
+  "_copy_without_render": ["*config.yml"]
 }
 // REPLACE_END

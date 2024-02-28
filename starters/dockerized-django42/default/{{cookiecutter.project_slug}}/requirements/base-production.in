@@ -9,4 +9,5 @@
 
 -c base-base.txt
 
-gunicorn==20.1.*  # 2021 Mar https://pypi.org/project/gunicorn/20.1.0/
+gunicorn==21.2.0  # 2023 Jul https://pypi.org/project/gunicorn/21.2.0/
+sentry-sdk==1.32.0 # 2023 Oct https://pypi.org/project/sentry-sdk/1.32.0/

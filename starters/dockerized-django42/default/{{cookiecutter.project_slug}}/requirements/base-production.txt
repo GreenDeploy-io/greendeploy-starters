@@ -4,8 +4,19 @@
 #
 #    pip-compile base-production.in
 #
-gunicorn==20.1.0
+certifi==2023.5.7
+    # via
+    #   -c base-base.txt
+    #   sentry-sdk
+gunicorn==21.2.0
     # via -r base-production.in
-
-# The following packages are considered to be unsafe in a requirements file:
-# setuptools
+packaging==23.2
+    # via
+    #   -c base-base.txt
+    #   gunicorn
+sentry-sdk==1.32.0
+    # via -r base-production.in
+urllib3==2.0.3
+    # via
+    #   -c base-base.txt
+    #   sentry-sdk

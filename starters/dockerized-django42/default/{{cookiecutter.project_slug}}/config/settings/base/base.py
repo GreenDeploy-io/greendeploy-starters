@@ -210,15 +210,17 @@ TEMPLATES = [
     },
 ]
 
-DOESNOT_NEED_DATABASE_URL = [
-    "collectstatic",
-    "tailwind",
-]
-NEED_DATABASE_URL = sys.argv[1] not in DOESNOT_NEED_DATABASE_URL
+NEED_DATABASE_URL = True
+if len(sys.argv) >= 2:
+    DOESNOT_NEED_DATABASE_URL = [
+        "collectstatic",
+        "tailwind",
+    ]
+    NEED_DATABASE_URL = sys.argv[1] not in DOESNOT_NEED_DATABASE_URL
 
 # print(sys.argv)
 
-if len(sys.argv) > 1 and NEED_DATABASE_URL:
+if len(sys.argv) >= 1 and NEED_DATABASE_URL:
     DATABASE_URL = env("DATABASE_URL", None)
     if DATABASE_URL is None:
         POSTGRES_USER = env("POSTGRES_USER")
