@@ -1,0 +1,29 @@
+# .coveragerc
+[run]
+# branch = True
+parallel = True
+concurrency =
+    multiprocessing
+    thread
+source =
+    domains
+omit =
+    */migrations/*
+    */tests/*
+    manage.py
+    */settings.py
+    */wsgi.py
+    */asgi.py
+    */urls.py
+
+[report]
+show_missing = True
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    def __str__
+    if settings.DEBUG
+    raise AssertionError
+    raise NotImplementedError
+    if 0:
+    if __name__ == .__main__.:

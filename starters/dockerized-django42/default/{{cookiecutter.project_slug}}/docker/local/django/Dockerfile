@@ -86,6 +86,9 @@ COPY ./docker/production/django/ /
 
 RUN chmod +x /entrypoint
 
+# set ENV for coverage and pytest so that it can work for parallel
+ENV COVERAGE_PROCESS_START=/code/.coveragerc
+
 # copy out /start-web
 # start-web executes `migrate` and `runserver 0.0.0.0:8000`
 COPY ./docker/local/django/start-web_django /start-web_django

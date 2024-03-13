@@ -19,6 +19,8 @@ pytest==7.4.2 # 2023 Sep https://pypi.org/project/pytest/7.4.2/
 # why pytest-django can be so old https://github.com/pytest-dev/pytest-django/issues/1048
 pytest-django==4.5.2  # 2021 Dec https://pypi.org/project/pytest-django/4.5.2/
 pytest-restrict==4.6.0  # https://github.com/adamchainz/pytest-restrict
+pytest-xdist==3.5.0 # 2021 Nov https://pypi.org/project/pytest-xdist/3.5.0/
+coverage==7.4.3 # 2024 Feb https://pypi.org/project/coverage/7.4.3/
 
 # Tailwind
 # ------------------
