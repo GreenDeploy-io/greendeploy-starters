@@ -4,6 +4,10 @@ python-decouple==3.8
 gunicorn==21.2.0
 # psycopg==3.1.12 # 2023 Sep https://pypi.org/project/psycopg/3.1.12/
 
+# Benedict
+# ----------------------------------------------------------------
+python-benedict==0.33.2  # 2024 Mar https://pypi.org/project/python-benedict/0.33.2/ # this is to easily manipulate dictionaries inside python
+
 # Validation
 # ------------------------------------------------------------------------------
 webargs==8.3.0 # 2023 Jul https://github.com/marshmallow-code/webargs
