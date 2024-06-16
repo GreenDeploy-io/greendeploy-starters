@@ -25,17 +25,17 @@ There's a plan to have a `.windows` for developers on Windows machines.
 
 ## FAQs
 
-1. Why are you using 3.10.13 as the default python version for the virtual environment?
+1. Why are you using 3.12.3 as the default python version for the virtual environment?
 
 I follow the cadence of Ubuntu Long Term Support (LTS) versions.
 
-Ubuntu releases a LTS every two years and the last one was in 2022 April. Hence, version 22.04.
+Ubuntu releases a LTS every two years and the last one was in 2024 April. Hence, version 24.04.
 
 Each Ubuntu version comes with a default Python version.
 
-In Ubuntu 22.04, the default Python is 3.10.
+In Ubuntu 24.04, the default Python is 3.12.
 
-I just make sure that I keep to the latest patch version of 3.10 using ``check_for_newer_py_versions.sh``.
+I just make sure that I keep to the latest patch version of 3.12 using ``check_for_newer_py_versions.sh``.
 
 
 

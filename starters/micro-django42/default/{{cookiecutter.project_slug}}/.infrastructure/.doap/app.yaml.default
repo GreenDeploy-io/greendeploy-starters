@@ -1,3 +1,7 @@
+// BEGIN_REPLACE
+// {{ cookiecutter.project_name }} => {{ '{{ cookiecutter.project_name }}' }}
+// {{ cookiecutter.project_slug }} => {{ '{{ cookiecutter.project_slug }}' }}
+// REPLACE_START
 alerts:
 - rule: DEPLOYMENT_FAILED
 - rule: DOMAIN_FAILED
@@ -25,3 +29,4 @@ services:
   name: {{ cookiecutter.project_slug }}
   run_command: gunicorn manage:application --log-file -
   source_dir: /
+// REPLACE_END

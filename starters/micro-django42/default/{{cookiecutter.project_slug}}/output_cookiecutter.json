@@ -1,22 +1,13 @@
-// BEGIN_REPLACE
-// {{ cookiecutter.project_name }} => {{ '{{ cookiecutter.project_name }}' }}
-// {{ cookiecutter.domain_name }} => {{ '{{ cookiecutter.domain_name }}' }}
-// {{ cookiecutter.docker_service_web }} => {{ '{{ cookiecutter.docker_service_web }}' }}
-// {{ cookiecutter.debug }} => {{ '{{ cookiecutter.debug }}' }}
-// {{ cookiecutter.timezone }} => {{ '{{ cookiecutter.timezone }}' }}
-// {{ cookiecutter.owner_login }} => {{ '{{ cookiecutter.owner_login }}' }}
-// REPLACE_START
 {
-    "project_name": "{{ cookiecutter.project_name }}",
-    "project_slug": "{% raw %}{{ cookiecutter.project_name.replace(' ', '_').replace('-', '_').lower().strip('-') }}{% endraw %}",
-    "project_noslug": "{% raw %}{{ cookiecutter.project_name.replace(' ', '').replace('-', '').lower().strip('') }}{% endraw %}",
+    "project_name": "micro-django42-demo",
+    "project_slug": "{{ cookiecutter.project_name.replace(' ', '_').replace('-', '_').lower().strip('-') }}",
+    "project_noslug": "{{ cookiecutter.project_name.replace(' ', '').replace('-', '').lower().strip('') }}",
     "repo_private_or_public": "public",
-    "domain_name": "{{ cookiecutter.domain_name }}",
-    "docker_service_web": "{{ cookiecutter.docker_service_web }}",
-    "debug": "{{ cookiecutter.debug }}",
-    "timezone": "{{ cookiecutter.timezone }}",
-    "owner_login": "{{ cookiecutter.owner_login }}",
+    "domain_name": "example.com",
+    "docker_service_web": "web_django",
+    "debug": "y",
+    "timezone": "UTC",
+    "owner_login": "simkimsia",
     "some_other_variable": "some_other_value",
     "_copy_without_render": ["*config.yml"]
   }
-  // REPLACE_END

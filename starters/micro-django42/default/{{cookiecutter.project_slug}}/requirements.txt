@@ -1,14 +1,10 @@
 # Django and typical dependencies
-django==4.2.7
-python-decouple==3.8
-gunicorn==21.2.0
-# psycopg==3.1.12 # 2023 Sep https://pypi.org/project/psycopg/3.1.12/
-
-# Benedict
-# ----------------------------------------------------------------
-python-benedict==0.33.2  # 2024 Mar https://pypi.org/project/python-benedict/0.33.2/ # this is to easily manipulate dictionaries inside python
+django==4.2.13 # 2024 May https://pypi.org/project/Django/4.2.13/
+python-decouple==3.8 # 2023 Mar https://pypi.org/project/python-decouple/3.8.0/
+gunicorn==22.0.0 # 2024 Apr https://pypi.org/project/gunicorn/22.0.0/
+# psycopg==3.1.19 # 2024 May https://pypi.org/project/psycopg/3.1.19/
 
 # Validation
 # ------------------------------------------------------------------------------
-webargs==8.3.0 # 2023 Jul https://github.com/marshmallow-code/webargs
-marshmallow==3.20.1 # 2023 Jul https://github.com/marshmallow-code/marshmallow/3.20.1/
+webargs==8.4.0 # 2024 Jan https://pypi.org/project/webargs/8.4.0
+marshmallow==3.21.3 # 2024 Jun https://pypi.org/project/marshmallow/3.21.3/

@@ -1,4 +1,4 @@
-venv_symlink={{ cookiecutter.project_slug }}
+venv_symlink=micro_django42_demo
 venv_actual=
 current_version=
 target_version_file=".infrastructure/.macos/.chosen-python-version"
