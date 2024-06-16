@@ -27,7 +27,7 @@ Objective: to have pyenv installed and a python version installed in `$(pyenv ro
 
 How to tell success:
 
-To check, type in terminal `cd $(pyenv root)/versions/` and look for `3.10.13` for e.g.
+To check, type in terminal `cd $(pyenv root)/versions/` and look for `3.12.3` for e.g.
 
 If you haven't already installed `pyenv`, you can follow the steps here.
 
@@ -36,7 +36,7 @@ Steps:
 - `brew update`
 - `brew upgrade`
 - `brew install pyenv`
-- `pyenv install 3.x.x` (or whatever version stated in `.infrastructure/.macos/.python-version`) so in this case it should be `pyenv install 3.10.13`
+- `pyenv install 3.x.x` (or whatever version stated in `.infrastructure/.macos/.python-version`) so in this case it should be `pyenv install 3.12.3`
 
 
 ### How to setup a specific virtual environment for this project
@@ -108,7 +108,9 @@ The dependencies here are for the project.
 
 5.  run ``python manage.py runserver`` for localhost
 
-now you're ready to run the project. Go to http://localhost:8000 and you should see a json response in your browser after being redirected.
+now you're ready to run the project. Go to http://localhost:8000 and you should see
+
+Django + Tailwind = ❤️
 
 This means all the dependencies are installed correctly. Congratulations!
 
@@ -124,7 +126,7 @@ run `. .infrastructure/.macos/.venv-scripts/source_venv.sh`
 
 This step will teach you how to turn on and turn off the virtual environment.
 
-1. run `source ~/.venv/{{ cookiecutter.project_slug }}/bin/activate` to turn on the virtual environment
+1. run `source .venv/{{ cookiecutter.project_slug }}/bin/activate` to turn on the virtual environment
 2. run `deactivate`  to deactivate the virtual environment
 
 // REPLACE_END

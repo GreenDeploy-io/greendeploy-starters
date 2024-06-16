@@ -19,10 +19,17 @@ The dependencies stated here are useful for debugging.
 
 The dependencies here are for the project.
 
-5.  run ``python manage.py runserver`` for localhost
+5.  run ``python manage.py runserver "[::]:8000"`` for localhost
 
 now you're ready to run the project. Go to http://localhost:8000 and you should see a json response in your browser after being redirected.
 
 This means all the dependencies are installed correctly. Congratulations!
 
 ## How to get tailwind htmx working locally
+
+1. stop ``python manage.py runserver "[::]:8000"`` if you're running it
+2. ``python manage.py tailwind install``
+3. run ``python manage.py runserver "[::]:8000"`` in current terminal tab
+4. open new tab and activate the venv
+5. run ``python manage.py tailwind start``
+6. go to http://localhost:8000 and you should see `Django + Tailwind = ❤️` in middle of page and this means it works

@@ -8,7 +8,7 @@ source .infrastructure/.macos/.venv-scripts/.variables
 PROJECT_ROOT=$(git rev-parse --show-toplevel)
 
 # Change to the project root directory
-cd "$PROJECT_ROOT" || exit
+cd "$PROJECT_ROOT"
 
 # Check if .venv directory exists at the project root. Create it if not.
 if [ ! -d "$PROJECT_ROOT/.venv" ]; then

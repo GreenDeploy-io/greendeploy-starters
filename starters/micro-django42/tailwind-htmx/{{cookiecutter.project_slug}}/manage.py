@@ -4,8 +4,7 @@ import sys
 from decouple import config
 from django.conf import settings
 from django.core.wsgi import get_wsgi_application
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import redirect
+from django.http import JsonResponse
 
 BASE_DIR = os.path.dirname(__file__)
 
@@ -32,9 +31,9 @@ settings.configure(
         "django.contrib.admin",  # for admin
         "django.contrib.messages",  # for admin
         # tailwind
-        'tailwind',
-        'theme',
-        'django_browser_reload',
+        "tailwind",
+        "theme",
+        "django_browser_reload",
         # END tailwind
     ],
     ROOT_URLCONF=__name__,
@@ -47,7 +46,7 @@ settings.configure(
         "django.contrib.auth.middleware.AuthenticationMiddleware",  # Required for admin
         "django.contrib.messages.middleware.MessageMiddleware",  # Required for admin
         # tailwind
-        "django_browser_reload.middleware.BrowserReloadMiddleware", # after any that encode the response, such as Django’s GZipMiddleware
+        "django_browser_reload.middleware.BrowserReloadMiddleware",  # after any that encode the response, such as Django’s GZipMiddleware
         # END tailwind
     ],
     # Templates
@@ -68,10 +67,10 @@ settings.configure(
         },
     ],
     # Tailwind
-    TAILWIND_APP_NAME='theme',
+    TAILWIND_APP_NAME="theme",
     INTERNAL_IPS=[
         "127.0.0.1",
-    ]
+    ],
     # END Tailwind
 )
 
@@ -94,11 +93,12 @@ django.setup()
 def hello_world(request):
     return JsonResponse({"message": "Hello, World!"})  # Updated endpoint function
 
+
 from django.shortcuts import render
 
 
 def default(request):
-    return render(request, 'base.html')
+    return render(request, "base.html")
 
 
 # End of Views
@@ -109,8 +109,9 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
+
 urlpatterns = [
-    path("", default), # default
+    path("", default),  # default
     # tailwind
     path("__reload__/", include("django_browser_reload.urls")),
     # END tailwind
@@ -119,7 +120,6 @@ urlpatterns = [
     # path("", lambda request: redirect("/hello/", permanent=True)),
     path("admin/", admin.site.urls),  # for admin
     path("hello/", hello_world),  # Updated path
-
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
