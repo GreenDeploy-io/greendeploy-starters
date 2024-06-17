@@ -1,12 +1,26 @@
 import os
 import sys
 
-from decouple import config
+# this ensures that the .env file is loaded from the correct location
+from decouple import Config, RepositoryEnv
 from django.conf import settings
 from django.core.wsgi import get_wsgi_application
 from django.http import JsonResponse  # Updated to use JsonResponse
 from django.shortcuts import redirect
 from django.urls import path
+
+
+def get_config():
+
+    # Default to 'local' if ENV_NAME not set
+    env_name = os.getenv("ENV_NAME", "local")
+
+    # in the production environment, make sure to set ENV_NAME to 'production'
+    env_file = f".env.{env_name}"
+    return Config(RepositoryEnv(env_file))
+
+
+config = get_config()
 
 BASE_DIR = os.path.dirname(__file__)
 
@@ -14,6 +28,12 @@ BASE_DIR = os.path.dirname(__file__)
 DEBUG = config("DEBUG", default=True, cast=bool)
 SECRET_KEY = config("SECRET_KEY", default="your_default_secret_key")
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="localhost").split(",")
+
+# Default to 'local' if ENV_NAME not set
+env_name = os.getenv("ENV_NAME", "local")
+if env_name == "local":
+
+    os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
 # Django Settings
 settings.configure(
