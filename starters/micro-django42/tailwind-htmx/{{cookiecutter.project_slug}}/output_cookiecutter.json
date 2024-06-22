@@ -2,7 +2,6 @@
 // {{ cookiecutter.project_name }} => {{ '{{ cookiecutter.project_name }}' }}
 // {{ cookiecutter.domain_name }} => {{ '{{ cookiecutter.domain_name }}' }}
 // {{ cookiecutter.docker_service_web }} => {{ '{{ cookiecutter.docker_service_web }}' }}
-// {{ cookiecutter.debug }} => {{ '{{ cookiecutter.debug }}' }}
 // {{ cookiecutter.timezone }} => {{ '{{ cookiecutter.timezone }}' }}
 // {{ cookiecutter.owner_login }} => {{ '{{ cookiecutter.owner_login }}' }}
 // REPLACE_START
@@ -13,7 +12,7 @@
   "repo_private_or_public": "public",
   "domain_name": "{{ cookiecutter.domain_name }}",
   "docker_service_web": "{{ cookiecutter.docker_service_web }}",
-  "debug": "{{ cookiecutter.debug }}",
+  "debug": "y",
   "timezone": "{{ cookiecutter.timezone }}",
   "owner_login": "{{ cookiecutter.owner_login }}",
   "some_other_variable": "some_other_value",
