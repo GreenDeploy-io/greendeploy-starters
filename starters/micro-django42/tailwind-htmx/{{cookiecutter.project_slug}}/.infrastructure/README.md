@@ -25,7 +25,7 @@ There's a plan to have a `.windows` for developers on Windows machines.
 
 ## FAQs
 
-1. Why are you using 3.12.3 as the default python version for the virtual environment?
+1. Why are you using 3.12.5 as the default python version for the virtual environment?
 
 I follow the cadence of Ubuntu Long Term Support (LTS) versions.
 

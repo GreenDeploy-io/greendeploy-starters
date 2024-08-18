@@ -1,3 +1,3 @@
-# micro-django42-demo
+# {{ cookiecutter.project_name }}
 
 Your one-liner explainer

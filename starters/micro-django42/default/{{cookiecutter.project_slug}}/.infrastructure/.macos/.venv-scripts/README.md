@@ -27,7 +27,7 @@ Objective: to have pyenv installed and a python version installed in `$(pyenv ro
 
 How to tell success:
 
-To check, type in terminal `cd $(pyenv root)/versions/` and look for `3.12.3` for e.g.
+To check, type in terminal `cd $(pyenv root)/versions/` and look for `3.12.5` for e.g.
 
 If you haven't already installed `pyenv`, you can follow the steps here.
 
@@ -36,7 +36,7 @@ Steps:
 - `brew update`
 - `brew upgrade`
 - `brew install pyenv`
-- `pyenv install 3.x.x` (or whatever version stated in `.infrastructure/.macos/.python-version`) so in this case it should be `pyenv install 3.12.3`
+- `pyenv install 3.x.x` (or whatever version stated in `.infrastructure/.macos/.python-version`) so in this case it should be `pyenv install 3.12.5`
 
 
 ### How to setup a specific virtual environment for this project

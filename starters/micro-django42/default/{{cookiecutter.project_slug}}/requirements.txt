@@ -1,8 +1,8 @@
 # Django and typical dependencies
-django==4.2.13 # 2024 May https://pypi.org/project/Django/4.2.13/
+django==4.2.15 # 2024 Aug https://pypi.org/project/Django/4.2.15/
 python-decouple==3.8 # 2023 Mar https://pypi.org/project/python-decouple/3.8.0/
-gunicorn==22.0.0 # 2024 Apr https://pypi.org/project/gunicorn/22.0.0/
-# psycopg==3.1.19 # 2024 May https://pypi.org/project/psycopg/3.1.19/
+gunicorn==23.0.0 # 2024 Aug https://pypi.org/project/gunicorn/23.0.0/
+# psycopg==3.2.1 # 2024 Jul https://pypi.org/project/psycopg/3.2.1/
 
 # Validation
 # ------------------------------------------------------------------------------
