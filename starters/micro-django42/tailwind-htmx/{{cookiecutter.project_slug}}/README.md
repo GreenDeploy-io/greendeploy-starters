@@ -1,5 +1,6 @@
 // BEGIN_REPLACE
 // {{ cookiecutter.project_name }} => {{ '{{ cookiecutter.project_name }}' }}
+// {{ cookiecutter.project_slug }} => {{ '{{ cookiecutter.project_slug }}' }}
 // REPLACE_START
 # {{ cookiecutter.project_name }}
 
@@ -10,7 +11,7 @@ Your one-liner explainer
 
 1. turn on terminal
 2. at root of project, run `. .infrastructure/.macos/.venv-scripts/init_venv.sh`
-3. run `source .venv/micro_django_tailwind_htmx_template_for_frontend_demo/bin/activate` to turn on virtual environment ( to turn off use `deactivate`)
+3. run `source .venv/{{ cookiecutter.project_slug }}/bin/activate` to turn on virtual environment ( to turn off use `deactivate`)
 4. run `pip install -r .infrastructure/requirements/dev.txt` to install development dependencies in the virtual environment
 5. run ``pip install --upgrade pip`` if prompted in the virtual environment
 6. run ``pip install -r requirements.txt`` to install app dependencies in the virtual environment
